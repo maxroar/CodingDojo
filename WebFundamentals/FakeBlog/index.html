@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="fakeblog.css" type="text/css" rel="stylesheet" >
+    <meta charset="utf-8">
+    <title>Max's Fake Blog</title>
+    <meta name="title" content="A blog created by Max Rohrer with information but not a lot of functionality yet.">
+  </head>
+  <body>
+    <h1>This is a fake blog about real blogs!</h1>
+    <div id="table">
+      <table>
+        <thead>
+          <tr>
+            <td colspan="4">Reasons for a Blog and people who blog about it</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Sharing of ideas</th>
+            <th>Chronicling a series of events</th>
+            <th>As an assignment</th>
+            <th>Boredom</th>
+          </tr>
+          <tr>
+            <td>idea havers</td>
+            <td>adventurers</td>
+            <td>students</td>
+            <td>people with too much time on their hands</td>
+          </tr>
+          <tr>
+            <td>opinionated people</td>
+            <td>people trying new experiences</td>
+            <td></td>
+            <td>Richard Branson</td>
+          </tr>
+        </tbody>
+      </table>
+    </div><!--this is the end of the table div-->
+    <p>This blog is designed to help you understand the reasons to create a blog. Maybe you like:</p>
+    <ul>
+      <li>Cooking and want to share <a href="http://www.epicurious.com">recipes</a>.</li>
+      <li>Movies and want to share reviews of <a href="http://www.imdb.com">movies</a> you have seen.</li>
+      <li>Or maybe <span id="awesome">you're just awesome!</span></li>
+    </ul>
+    <p>Please answer our questionaire below to let us know your reasons for blogging.</p>
+    <div id="questionaire">
+      <form>
+        <h4>Blog Questionaire</h4>
+        <label>
+          Name: <input type="text" name="name">
+        </label>
+        <p>Why do you blog?</p>
+        <Label>
+          <input type="radio" name="why" value="ideas">Sharing of ideas
+        </label>
+        <label>
+          <input type="radio" name="why" value="chronicle">Chronicling a series of events
+        </label>
+        <br/>
+        <label>
+          <input type="radio" name="why" value="assignment">As an assignment
+        </label>
+        <label>
+          <input type="radio" name="why" value="boredom">Boredom
+        </label>
+        <p>What type of person are you?<br/>
+        <span class="note">(check all that apply)</span></p>
+        <label>
+          <input type="checkbox" name="type" value="idea">I have ideas
+        </label>
+        <label>
+          <input type="checkbox" name="type" value="opinonated">I have opinions
+        </label>
+        <br>
+        <label>
+          <input type="checkbox" name="type" value="adventure">I like to chronicle my adventures
+        </label>
+        <br>
+        <label>
+          <input type="checkbox" name="type" value="experience">I like to chronicle my new experiences
+        </label>
+        <br>
+        <label>
+          <input type="checkbox" name="type" value="student">I'm a student'
+        </label>
+        <label>
+          <input type="checkbox" name="type" value="time">I have too much free time
+        </label>
+        <br>
+        <label>
+          <input type="checkbox" name="type" value="branson">I'm Richard Branson
+        </label>
+        <br>
+        <p>How many blogs have you written?
+          <select name="blogNum">
+            <option value="0">None</option>
+            <option value="1-3">1-3</option>
+            <option value ="4-6">4-6</option>
+            <option value="7-10">7-10</option>
+            <option value="11+">more than 10</option>
+          </select>
+        </p>
+        <input type="submit" value="submit" id="subButton">
+      </form>
+    </div><!--this is the end of the form div (questionaire)-->
+  </body>
+</html>

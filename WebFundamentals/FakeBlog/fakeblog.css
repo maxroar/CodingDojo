@@ -1,0 +1,54 @@
+body{
+  background-color: #dfff80;
+  padding: 40px;
+}
+h1{
+  text-align: center;
+}
+thead{
+  text-align: center;
+  font: 18px bold;
+}
+table{
+  border: 3px solid black;
+  background-color: black;
+}
+thead{
+  text-align: center;
+  font: bold 18px;
+  background-color: white;
+}
+th{
+  border: 2px solid black;
+  background-color: white;
+}
+td{
+  border: 1px solid black;
+  padding: 4px;
+  background-color: white;
+}
+#awesome{
+  font-weight: bold;
+}
+.note{
+  font-style: italic;
+  font-weight: lighter;
+}
+form{
+  border: 2px dotted black;
+  padding: 10px;
+}
+#questionaire{
+  width: 320px;
+  margin: auto;
+  margin-top: 30px;
+  background-color: #ffffff;
+}
+input{
+  margin: 5px;
+}
+#subButton{
+  height: 30px;
+  width: 80px;
+  font-size: 18px;
+}
