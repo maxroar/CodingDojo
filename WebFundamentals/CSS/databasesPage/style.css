@@ -1,0 +1,94 @@
+*{
+  margin:0;
+  padding:0;
+}
+#wrapper{
+  width: 980px;
+  margin: 0 auto;
+}
+h2{
+  background-image: url(images/database-name.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 40px;
+  text-align: right;
+  padding-top: 50px;
+  padding-right: 20px;
+}
+h4{
+  margin: 10px 0 5px 10px;
+}
+p{
+  padding: 10px;
+  font-size:14px;
+}
+ul{
+  border: 1px solid black;
+}
+li {
+  display: inline-block;
+  width: 13%;
+  border-right: 1px solid black;
+  text-align: center;
+  list-style-type: none;
+  padding-top: 5px;
+  height: 30px;
+}
+#content{
+  padding: 20px;
+  background: radial-gradient(#6D5965, #19090D);
+}
+.inlineB{
+  display:inline-block;
+  background: linear-gradient(#99A7C1, #FEFEFE);
+}
+.boxBar{
+  vertical-align: top;
+  background: linear-gradient(#C0C0C0,#8E8C98,#C0C0C0);
+}
+#topRow{
+  height:250px;
+  background: none;
+}
+#largeImage{
+  border: 10px solid #C0C0C0;
+  width: 50%;
+  height: 250px;
+}
+#topData{
+  width: 45%;
+  height: 270px;
+  vertical-align: top;
+  margin-left: 2%;
+  display:inline-block;
+  background: linear-gradient(#99A7C1, #FEFEFE);
+}
+#divider{
+  font-size: 10px;
+  color: #5F9DB5;
+  font-weight: bold;
+  text-align: right;
+  margin-right: 20px;
+}
+.bottomBox{
+  width: 23%;
+  height: 450px;
+  margin-right: 15px;
+  vertical-align: top;
+  position: relative;
+}
+.readMore{
+  margin-left:50%;
+  padding: 2px;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  background-color: #5C729C;
+  border: 2px solid #19090D;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+#searchButton{
+  margin-top: -30px;
+}
