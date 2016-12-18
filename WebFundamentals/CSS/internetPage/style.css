@@ -35,7 +35,7 @@ h2{
   padding: 10px;
 }
 #sideText{
-  
+
 }
 .button{
   width: 95%;
@@ -92,4 +92,10 @@ hr{
   width: 65%;
   vertical-align: top;
   border: 1px solid pink;
+}
+#house{
+  height: 20px;
+}
+#dnsLink{
+  text-decoration: none;
 }
