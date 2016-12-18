@@ -12,13 +12,14 @@ console.log(numbersOnly(startingArr));
 
 function numRemover(startingArr){
   var idxPlace = 0;
+  var origLength = startingArr.length;
   for(i = 0; i<startingArr.length; i++){
     if(typeof startingArr[i] !== "number"){
       startingArr[idxPlace] = startingArr[i];
       idxPlace++;
     }
   }
-  for(var j = 0; j<startingArr.length - idxPlace; j++){
+  for(var j = 0; j<origLength - idxPlace; j++){
     startingArr.pop();
   }
   return startingArr;
