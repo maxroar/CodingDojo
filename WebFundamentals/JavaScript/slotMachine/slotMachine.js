@@ -7,8 +7,9 @@ function spinSlot(wallet){
   wallet --;
   var jackpot = Math.trunc(Math.random() * 100);
   var spin = Math.trunc(Math.random() * 100);
+  var winnings = 0;
   if (spin === jackpot){
-    var winnings = Math.trunc(Math.random()*50 + 50);
+    winnings = Math.trunc(Math.random()*50 + 50);
     wallet += winnings;
   }
   console.log(`You won $${winnings} and your new total is $${wallet}.`);
