@@ -5,16 +5,21 @@
 #left{
   width: 30%;
   display: inline-block;
+  vertical-align: top;
 }
 #right{
   width: 60%;
-  display: inline;
+  display: inline-block;
 }
 .card{
   height: 200px;
   width: 300px;
   border: 1px solid green;
+  padding: 10px;
 }
 .hide{
   display: none;
+}
+h2{
+  text-align: center;
 }
