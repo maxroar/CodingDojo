@@ -11,13 +11,17 @@
     <div id="wrapper">
       <div id="left">
         <form class="" action="index.html" method="post">
-          <label>First Name: </label>
-          <input type="text" name="first" placeholder="First Name" id="fName">
-          <label>Last Name: </label>
-          <input type="text" name="last" placeholder="Last Name" id="lName">
-          <label>Description: </label>
-          <input type="text" name="description" placeholder="Description" id="info">
-          <button type="button" id="butt">Add User</button>
+          <div class="formDiv" id="nameInput">
+            <label id="firstLabel">First Name: </label>
+            <input type="text" name="first" placeholder="First Name" id="fName">
+            <label>Last Name: </label>
+            <input type="text" name="last" placeholder="Last Name" id="lName">
+          </div>
+          <div class="formDiv" id="infoInput">
+            <label>Description: </label>
+            <input type="text" name="description" placeholder="Please enter a description..." id="info">
+            <button type="button" id="butt">Add User</button>
+          </div>
         </form>
       </div>
       <div id="right">

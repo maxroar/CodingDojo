@@ -2,24 +2,101 @@
   margin: 0;
   padding: 0;
 }
+body{
+  background-color: #aa8039;
+}
+#wrapper{
+  width: 670px;
+  padding: 10px;
+  margin: auto;
+  background-color: #d4ad6a;
+  height: 100%;
+  border-radius: 5px;
+
+}
 #left{
-  width: 30%;
   display: inline-block;
   vertical-align: top;
 }
-#right{
-  width: 60%;
+#left label{
+  font-weight: bold;
+  margin: 5px;
+  color: #ffe0aa;
+}
+form{
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  width: 300px;
   display: inline-block;
+  background-color: #805815;
+}
+#right{
+  display: inline-block;
+  width:330px;
 }
 .card{
-  height: 200px;
   width: 300px;
-  border: 1px solid green;
+  border-radius: 10px;
   padding: 10px;
+  position: relative;
+  display: inline-block;
+  margin: 0 15px 10px 10px;
+  background-color: #ffe0aa;
 }
 .hide{
   display: none;
 }
 h2{
   text-align: center;
+  font-size: 2em;
+  color: #553600;
+}
+p.show{
+  vertical-align: bottom;
+  text-align: center;
+}
+#infoInput {
+  vertical-align: top;
+}
+#info{
+  height: 55px;
+  width: 170px;
+}
+#infoInput label{
+  vertical-align: top;
+}
+.formDiv{
+  display: inline-block;
+}
+input{
+  margin-bottom: 20px;
+  background-color: #d4ad6a;
+  padding: 5px;
+  color: #553600;
+}
+#butt{
+  height: 40px;
+  width: 120px;
+  border-radius: 5px;
+  vertical-align: top;
+  margin-left: 10px;
+  background-color: #ffe0aa;
+  color: #aa8039;
+  font-weight: bold;
+}
+::-webkit-input-placeholder {
+   color: #805815;
+}
+:-moz-placeholder { /* Firefox 18- */
+   color: #805815;
+}
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #805815;
+}
+:-ms-input-placeholder {
+   color: #805815;
+}
+p{
+  color: #805815;
 }

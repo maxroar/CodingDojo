@@ -23,7 +23,9 @@ $(document).ready(function(){
       //now that everything is properly initiated, append the data with the function already initiated to the #right div
       $("#right").append(cardData);
       //here is some code to clear the values of the forms
-
+      $("#fName").val("");
+      $("#lName").val("");
+      $("#info").val("");
     }
   });
 });
