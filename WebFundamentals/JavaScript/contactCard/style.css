@@ -74,6 +74,15 @@ input{
   background-color: #d4ad6a;
   padding: 5px;
   color: #553600;
+  border-color: #ffe0aa;
+}
+h1{
+  color: #805815;
+  border-radius:5px;
+  text-align: center;
+  margin: 0 auto 10px;
+  border-bottom: 1px solid #ffe0aa;
+  padding-bottom: 5px;
 }
 #butt{
   height: 40px;
