@@ -1,0 +1,46 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+#wrapper{
+  width: 1080px;
+  height: 600px;
+  margin: auto;
+  background-color: #1f0c0c;
+  text-align: center;
+  padding: 20px;
+}
+.house{
+  width: 18%;
+  height: 25%;
+  display: inline-block;
+  margin: 2%;
+  border: 2px solid #afafaf;
+}
+.house img{
+  height: 100%;
+  width: 100%;
+}
+#info{
+  width: 60%;
+  margin: auto;
+  border: 2px solid #afafaf;
+  height: 50%;
+  color: #afafaf;
+  padding: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 40px;
+}
+#info p, li {
+  font-family: century;
+  color: white;
+  margin: 10px;
+  font-size: 20px;
+}
+li{
+    list-style-type: none;
+}
+#info h2{
+  font-family: garamond;
+  font-size: 30px;
+}

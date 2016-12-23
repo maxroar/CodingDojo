@@ -17,8 +17,8 @@ $(document).ready(function(){
           <p class="hide">${info}</p>
         </div>
         `).on('click', function(){//this .on('click') is saying "when you click the button to create the card then you also want to add the following function which will make the content toggle between shown and hidden"
-            $(this).find('.show').toggle(); //if content is visible then hide it
-            $(this).find('.hide').toggle(); //if content is hidden then show it
+            $(this).children().toggle(); //if content is visible then hide it
+            // $(this).find('.hide').toggle(); //if content is hidden then show it
         });
       //now that everything is properly initiated, append the data with the function already initiated to the #right div
       $("#right").append(cardData);

@@ -17,19 +17,29 @@
 $(document).ready(function(){
   //loop to set ids and display all images
   for(var i=1; i<= 151; i++){
-    var pokemonAPI = $(`<img class='pokeImg' data-pokeid='${i}' src="http://54.70.82.18/media/${i}.png">`);
+    var pokemonAPI = $(`<img class='pokeImg' data-pokeid='${i}' src="http://pokeapi.co/media/img/${i}.png">`);
     $('#left').append(pokemonAPI);
   }
   $('.pokeImg').on('click',function(){
     console.log(this);
     var pokeNum = $(this).data('pokeid');
-    // $.get(`http://pokeapi.co/api/v1/pokemon/${pokeNum}/`, function(res){
-    //   console.log(res);
-    //   //assign vars
-    // }, 'json');
     console.log('before .get', pokeNum)
     $.get(`http://pokeapi.co/api/v1/pokemon/${pokeNum}/`, function(response) {
-      console.log('DONNEEEEEE', response)
-    })
-  })
+      console.log('DONNEEEEEE', response);
+      var right= `
+        <h2>${response.name}</h2>
+        <img src="http://pokeapi.co/media/img/${pokeNum}.png>
+        <ul>
+      `;
+      for(var j=0; j<response.types.length; j++){
+        right += `<li>${response['types']['j']['name']}</li>`;
+      }
+      right += `</ul>
+        <p>Height: ${response.height}</p>
+        <p>Weight: ${response.weight}</p>
+      `;
+      $('#right').html(right);
+      }
+    });
+  });
 });
