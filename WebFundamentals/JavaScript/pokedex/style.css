@@ -1,0 +1,12 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+#left{
+  width: 70%;
+  display: inline-block;
+}
+#right{
+  width: 25%;
+  display: inline-block;
+}
