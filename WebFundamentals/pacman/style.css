@@ -4,26 +4,54 @@
 }
 body{
   background-color: black;
+  margin: 0px;
+}
+div.row{
+  margin: 0;
+  padding: 0;
+  height: 20px;
 }
 div.row div{
-  border: 1px solid black;
   display: inline-block;
   width: 20px;
-  height: 20px
+  height: 20px;
 }
 .brick{
-  background-color: blue;
+  background-color: limegreen;
 }
 .coin{
   background-image: url('coin.gif');
   background-repeat: no-repeat;
   background-size: contain;
 }
-.aykman{
+div#levelMap{
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+#placeholderBox{
+  width: 300px;
+  height:200px;
+  border:2px solid blue;
+  color: white;
+}
+div#aykman{
   background-image: url('aykman.jpg');
   background-repeat: no-repeat;
   background-size: contain;
+  width: 20px; height: 20px;
+  position: absolute;
 }
 .empty{
   background: none;
+}
+#scoreCard{
+  border: 2px solid white;
+  width: 140px;
+  height: 45px;
+  margin-left: 30px;
+  color: white;
+  padding: 8px;
+  text-align: center;
+  display: inline-block;
 }
