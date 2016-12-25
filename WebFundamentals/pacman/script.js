@@ -1,11 +1,32 @@
 $(document).ready(function(){
   var level=[
-    [[2,2,2,2,2,2,2,2,2,2],
-    [2,0,2,1,1,1,2,1,1,2],
-    [2,1,2,1,2,1,1,1,1,2],
-    [2,1,1,1,2,1,2,1,1,2],
-    [2,1,2,1,1,1,2,1,1,2],
-    [2,2,2,2,2,2,2,2,2,2]]
+    [
+      [2,2,2,2,2,2,2,2,2,2],
+      [2,0,2,1,1,1,2,1,1,2],
+      [2,1,2,1,2,1,1,1,1,2],
+      [2,1,1,1,2,1,2,1,1,2],
+      [2,1,2,1,1,1,2,1,1,2],
+      [2,2,2,2,2,2,2,2,2,2]
+    ],
+    [
+      [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+      [2,0,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2],
+      [2,1,2,1,2,2,2,2,1,2,1,2,2,2,2,1,2,1,2],
+      [2,1,2,1,1,1,1,2,1,1,1,2,1,1,1,1,2,1,2],
+      [2,1,2,2,1,2,1,2,1,2,1,2,1,2,1,2,2,1,2],
+      [2,1,1,1,1,2,1,2,1,2,1,2,1,2,1,1,1,1,2],
+      [2,2,1,2,2,2,1,1,1,2,1,1,1,2,2,2,2,1,2],
+      [2,1,1,1,1,2,1,2,2,2,2,2,1,1,1,1,1,1,2],
+      [2,1,2,2,1,1,1,1,2,1,1,1,1,2,2,1,2,1,2],
+      [2,1,1,1,1,2,2,1,1,1,2,2,1,1,1,1,1,1,2],
+      [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]
+    ],
+    [
+
+    ],
+    [
+
+    ]
   ];
   var lvlID = 0;
   var score = 0;
@@ -73,19 +94,38 @@ $(document).ready(function(){
     console.log(e.which);
     if(e.which == 40){
       aykman.y ++;
+      if(level[lvlID][aykman.y][aykman.x] == 2){
+        aykman.y--;
+      }
     }
     else if(e.which == 39){
       aykman.x ++;
+      if(level[lvlID][aykman.y][aykman.x] == 2){
+        aykman.x--;
+      }
     }
     else if(e.which == 38){
       aykman.y --;
+      if(level[lvlID][aykman.y][aykman.x] == 2){
+        aykman.y++;
+      }
     }
     else if(e.which == 37){
       aykman.x --;
+      if(level[lvlID][aykman.y][aykman.x] == 2){
+        aykman.x++;
+      }
     }
     if(level[lvlID][aykman.y][aykman.x] == 1){
       level[lvlID][aykman.y][aykman.x] = 0;
       score+=10;
+    }else if(level[lvlID][aykman.y][aykman.x] == 3){
+      level[lvlID][aykman.y][aykman.x] = 0;
+      score+=50;
+    }
+    else if(level[lvlID][aykman.y][aykman.x] == 4){
+      level[lvlID][aykman.y][aykman.x] = 0;
+      score=0;
     }
     displayLevel();
     displayAykman();
