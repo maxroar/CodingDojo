@@ -2,27 +2,37 @@ $(document).ready(function(){
   var level=[
     [
       [2,2,2,2,2,2,2,2,2,2],
-      [2,0,2,1,1,1,2,1,1,2],
+      [2,0,2,1,1,1,2,1,3,2],
       [2,1,2,1,2,1,1,1,1,2],
-      [2,1,1,1,2,1,2,1,1,2],
-      [2,1,2,1,1,1,2,1,1,2],
+      [2,1,1,1,2,1,2,1,4,2],
+      [2,1,2,1,1,1,2,2,3,2],
       [2,2,2,2,2,2,2,2,2,2]
     ],
     [
       [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
-      [2,0,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2],
+      [2,0,1,1,1,4,1,1,1,2,1,1,1,1,1,1,1,1,2],
       [2,1,2,1,2,2,2,2,1,2,1,2,2,2,2,1,2,1,2],
       [2,1,2,1,1,1,1,2,1,1,1,2,1,1,1,1,2,1,2],
       [2,1,2,2,1,2,1,2,1,2,1,2,1,2,1,2,2,1,2],
-      [2,1,1,1,1,2,1,2,1,2,1,2,1,2,1,1,1,1,2],
+      [2,1,3,1,1,2,1,2,1,2,1,2,1,2,1,1,1,3,2],
       [2,2,1,2,2,2,1,1,1,2,1,1,1,2,2,2,2,1,2],
       [2,1,1,1,1,2,1,2,2,2,2,2,1,1,1,1,1,1,2],
       [2,1,2,2,1,1,1,1,2,1,1,1,1,2,2,1,2,1,2],
-      [2,1,1,1,1,2,2,1,1,1,2,2,1,1,1,1,1,1,2],
+      [2,4,1,1,1,2,2,1,1,1,2,2,1,1,1,1,1,3,2],
       [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]
     ],
     [
-
+      [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+      [6,0,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2],
+      [2,1,2,1,2,2,2,2,1,2,1,2,2,2,2,1,2,1,2],
+      [2,1,3,1,1,1,1,2,1,1,1,2,1,3,1,1,2,1,2],
+      [2,1,2,2,1,2,1,2,1,2,1,2,1,2,1,2,2,1,2],
+      [2,1,1,1,1,2,1,2,1,2,1,2,1,2,1,1,1,1,2],
+      [2,2,1,2,2,2,1,1,1,2,1,1,1,2,2,2,2,1,2],
+      [2,1,3,1,1,2,1,2,2,2,2,2,1,3,1,1,4,1,2],
+      [2,1,2,2,1,1,1,1,2,1,1,1,1,2,2,1,2,1,2],
+      [2,4,1,1,1,2,2,1,1,1,2,2,1,1,1,1,1,1,5],
+      [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]
     ],
     [
 
@@ -56,6 +66,14 @@ $(document).ready(function(){
           winner ++;
         }else if(level[lvlID][i][j] == 0){
           output += '<div class="empty"></div>'
+        }else if(level[lvlID][i][j] == 3){
+          output += '<div class="cookie"></div>'
+        }else if(level[lvlID][i][j] == 4){
+          output += '<div class="alien"></div>'
+        }else if(level[lvlID][i][j] == 5){
+          output += '<div class="tpr"></div>'
+        }else if(level[lvlID][i][j] == 6){
+          output += '<div class="tpl"></div>'
         }
         console.log(output);
       }
@@ -65,7 +83,7 @@ $(document).ready(function(){
     console.log(output);
     $('#levelMap').html(output);
     if(winner == 0){
-      if(lvlID<3){
+      if(lvlID<2){
         lvlID++;
         alert(`Winner!\nScore: ${score}\nNext level: ${lvlID+1}`);
         aykman.x=1;
@@ -116,6 +134,7 @@ $(document).ready(function(){
         aykman.x++;
       }
     }
+    //if else statements to handle the points/teleporters
     if(level[lvlID][aykman.y][aykman.x] == 1){
       level[lvlID][aykman.y][aykman.x] = 0;
       score+=10;
@@ -123,9 +142,35 @@ $(document).ready(function(){
       level[lvlID][aykman.y][aykman.x] = 0;
       score+=50;
     }
+    //4 represents ghosts
     else if(level[lvlID][aykman.y][aykman.x] == 4){
       level[lvlID][aykman.y][aykman.x] = 0;
       score=0;
+      alert('Loser!');
+    }
+    //5 represents right teleporter
+    else if(level[lvlID][aykman.y][aykman.x] == 5){
+      aykman.y = 1;
+      aykman.x = 1;
+      if(level[lvlID][aykman.y][aykman.x] == 1){
+        level[lvlID][aykman.y][aykman.x] = 0;
+        score+=10;
+      }else if(level[lvlID][aykman.y][aykman.x] == 3){
+        level[lvlID][aykman.y][aykman.x] = 0;
+        score+=50;
+      }
+    }
+    //6 represents the left teleporter
+    else if(level[lvlID][aykman.y][aykman.x] == 6){
+      aykman.y = 9;
+      aykman.x = 17;
+      if(level[lvlID][aykman.y][aykman.x] == 1){
+        level[lvlID][aykman.y][aykman.x] = 0;
+        score+=10;
+      }else if(level[lvlID][aykman.y][aykman.x] == 3){
+        level[lvlID][aykman.y][aykman.x] = 0;
+        score+=50;
+      }
     }
     displayLevel();
     displayAykman();
@@ -133,8 +178,3 @@ $(document).ready(function(){
   };
 
 });
-//down - 40
-// right - 39
-// left -37
-// up -38
-// space - 32
