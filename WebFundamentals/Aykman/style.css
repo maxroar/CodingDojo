@@ -1,0 +1,97 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  background-color: black;
+  margin: 0px;
+}
+#wrapper{
+  width: 600px;
+  margin: auto;
+}
+h1{
+  color: #18fa00;
+  font size: 30px;
+}
+div.row{
+  margin: 0;
+  padding: 0;
+  height: 20px;
+}
+div.row div{
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+.brick{
+  background-color: #10ae00;
+}
+.coin{
+  background-image: url('coin.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.alien{
+  background-image: url(alien.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.cookie{
+  background-image: url(cookie.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.tpr{
+  background-image: url(right.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.tpl{
+  background-image: url(left.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+div#levelMap{
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+#placeholderBox{
+  width: 300px;
+  height:200px;
+  border:2px solid blue;
+  color: white;
+}
+div#aykman{
+  background-image: url('aykman.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 20px; height: 20px;
+  position: absolute;
+}
+.empty{
+  background: none;
+}
+#scoreCard{
+  border: 2px solid white;
+  width: 140px;
+  height: 45px;
+  margin-left: 30px;
+  color: white;
+  padding: 8px;
+  text-align: center;
+  display: inline-block;
+  color: #18fa00;
+  font-family:monospace;
+  font-size: 30px;
+}
+button{
+  padding: 15px;
+  border-radius: 10px;
+  font: 20px bold black;
+  background: linear-gradient(#18fa00, #ffffff);
+}
+#buttonBar{
+  margin: 20px auto;
+}
