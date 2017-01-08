@@ -1,0 +1,5 @@
+1. mysql - u root -p
+2. **********
+3. SHOW DATABASES;
+4. CREATE DATABASE newDB;
+5. USE newDB;
