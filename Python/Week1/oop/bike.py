@@ -8,26 +8,21 @@ class Bike(object):
         print('Price: $%d' % self.price)
         print('Max Speed: %d MPH' % self.max_speed)
         print('Miles: %d' % self.miles)
-    def ride(self, times=1):
-        for rides in range(0, times):
-            print("Riding...")
-            self.miles += 10
-    def reverse(self, times=1):
-        for rides in range(0, times):
-            print('Reversing...')
-            self.miles -= 5
+    def ride(self):
+        print("Riding...")
+        self.miles += 10
+        return self
+    def reverse(self):
+        print('Reversing...')
+        self.miles -= 5
+        return self
 
 blueBike = Bike(300, 30)
 redBike = Bike(200, 20)
 awesomeBike = Bike(750, 88)
 
-blueBike.ride()
-blueBike.reverse(1)
-blueBike.displayInfo()
+blueBike.ride().ride().ride().reverse().displayInfo()
 
-redBike.ride(2)
-redBike.reverse(2)
-redBike.displayInfo()
+redBike.ride().ride().reverse().reverse().displayInfo()
 
-awesomeBike.reverse(3)
-awesomeBike.displayInfo()
+awesomeBike.reverse().reverse().reverse().displayInfo()
