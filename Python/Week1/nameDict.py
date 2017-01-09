@@ -16,5 +16,7 @@ def display_users(users):
         print(key)
         label = 0
         for value in data:
-            print('%d - %s %s - %d' % (label, users[key][value][first_name], users[key][value][last_name], nameLength))
+            label +=1
+            nameLength = len(value['first_name']) + len(value['last_name'])
+            print('%d - %s %s %d' % (label, value['first_name'], value['last_name'], nameLength))
 display_users(users)
