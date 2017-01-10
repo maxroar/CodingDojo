@@ -1,6 +1,6 @@
 def ten_scores():
     for num in range(0,10):
-        val = input('Please enter the test score: ')
+        val = int(input('Please enter the test score: '))
         if val >= 90:
             print('Your grade is A.')
         elif val >= 80:
