@@ -5,12 +5,8 @@ app = Flask(__name__)
 def display_index():
     return render_template('index.html')
 
-@app.route('/ninjas')
-def display_ninjas():
-    return render_template('ninjas.html')
-
-@app.route('/dojos/new')
-def display_dojos():
-    return render_template('dojo.html')
+@app.route('/result')
+def display_result():
+    return render_template('result.html')
 
 app.run(debug=True)

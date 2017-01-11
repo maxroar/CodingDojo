@@ -8,6 +8,18 @@
     <script type="text/javascript" src="{{url_for('static', filename='js/sscript.js')}}"></script>
   </head>
   <body>
-    <h1>Welcome!</h1>
+    <form action="">
+      Your Name:<input type="text" name='name'>
+      Dojo Location:<select name='location'>
+        <option value="seattle">Seattle</option>
+        <option value="sanJose">San Jose</option>
+      </select>
+      Favorite Language:<select name='language'>
+        <option value="python">Python</option>
+        <option value="notPython">Not Python</option>
+      </select>
+      Comment:<input type="text" name="comment">
+      <input type="submit" value="Submit">
+    </form>
   </body>
 </html>
