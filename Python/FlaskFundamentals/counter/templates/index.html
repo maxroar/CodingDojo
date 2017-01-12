@@ -8,10 +8,10 @@
     <script type="text/javascript" src="{{url_for('static', filename='js/sscript.js')}}"></script>
   </head>
   <body>
-    <h2>Submitted Info</h2>
-    <p>Name: {{data.name}}</p>
-    <p>Dojo Location: {{data.location}}</p>
-    <p>Favorite Language: {{data.language}}</p>
-    <p>Comment: {{data.comment}}</p>
+    <h1>Times: </h1>
+    <h2>{{session['counter']}}</h2>
+    <form action="reset" method="POST">
+      <button type="submit">Reset</button>
+    </form>
   </body>
 </html>
