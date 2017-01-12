@@ -8,7 +8,6 @@ def display_index():
 
 @app.route('/ninja/<color>')
 def display_turtles(color):
-    if color == '':
-        
+    return render_template('ninja.html', color=color)
 
 app.run(debug=True)
