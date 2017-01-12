@@ -5,9 +5,8 @@
     <title></title>
   </head>
   <body>
-    {% if color == '' %}
-      <img src="{{url_for('static', filename='img/tmnt.png')}}" alt="turtles" />
-    {% elif color == 'purple' %}
+
+    {% if color == 'purple' %}
       <img src="{{url_for('static', filename='img/donatello.jpg')}}" alt="donatello" />
     {% elif color == 'orange' %}
       <img src="{{url_for('static', filename='img/michelangelo.jpg')}}" alt="michelangelo" />

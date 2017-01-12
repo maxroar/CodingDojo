@@ -8,6 +8,10 @@
     <script type="text/javascript" src="{{url_for('static', filename='js/sscript.js')}}"></script>
   </head>
   <body>
-    <h1>No turtles here...</h1>
+    {% if thing == 'ninja' %}
+      <img src="{{url_for('static', filename='img/tmnt.png')}}" alt="turtles" />
+    {% else %}
+      <h1>No turtles here...</h1>
+    {% endif %}
   </body>
 </html>
