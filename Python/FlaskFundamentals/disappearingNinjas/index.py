@@ -6,4 +6,9 @@ app.secret_key = 'key'
 def display_index():
     return render_template('index.html')
 
+@app.route('/ninja/<color>')
+def display_turtles(color):
+    if color == '':
+        
+
 app.run(debug=True)
