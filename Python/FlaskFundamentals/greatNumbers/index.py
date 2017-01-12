@@ -40,7 +40,7 @@ def guessSubmit():
 
 @app.route('/reset', methods=['POST'])
 def reset():
-    session.pop('guessNum')
+    session.pop('randNum')
     return redirect('/')
 
 app.run(debug=True)
