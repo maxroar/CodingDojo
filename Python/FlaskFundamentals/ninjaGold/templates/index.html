@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
     <link href="{{url_for('static', filename='css/style.css')}}" type="text/css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
     <script type="text/javascript" src="{{url_for('static', filename='js/sscript.js')}}"></script>
   </head>
   <body>
@@ -17,28 +17,42 @@
     </div>
     <div class="row">
       <div class="col-xs-3">
+        <h2>Farm:</h2>
+        <p>Earns 10-20 gold</p>
         <form action="/process_money">
           <input type="hidden" name="building" value="farm">
           <input type="submit" class="btn btn-primary" value="Find Gold!">
         </form>
       </div>
       <div class="col-xs-3">
+        <h2>Cave:</h2>
+        <p>Earns 5-10 gold</p>
         <form action="/process_money">
           <input type="hidden" name="building" value="cave">
           <input type="submit" class="btn btn-primary" value="Find Gold!">
         </form>
       </div>
       <div class="col-xs-3">
+        <h2>House:</h2>
+        <p>Earns 2-5 gold</p>
         <form action="/process_money">
           <input type="hidden" name="building" value="house">
           <input type="submit" class="btn btn-primary" value="Find Gold!">
         </form>
       </div>
       <div class="col-xs-3">
+        <h2>Casino:</h2>
+        <p>Earns up to 30 gold or loses up to 50 gold</p>
         <form action="/process_money">
           <input type="hidden" name="building" value="casino">
           <input type="submit" class="btn btn-primary" value="Find Gold!">
         </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <p>Activity:</p>
+        <textarea name="activities" id="" cols="30" rows="10" value="{{ session['activity'] }}"></textarea>
       </div>
     </div>
   </body>
