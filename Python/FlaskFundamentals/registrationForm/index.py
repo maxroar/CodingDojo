@@ -1,9 +1,10 @@
 from flask import Flask, render_template, redirect, request, session, flash
+import re
 app = Flask(__name__)
 app.secret_key = 'key'
 
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
-
+PASS_REGEX = re.compile(r'^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,25}$')
 
 @app.route('/')
 def display_index():
@@ -22,13 +23,28 @@ def display_index():
 
 @app.route('/form_submit')
 def on_submit():
-    session['email'] = request.form['email']
-    session['first'] = request.form['first']
-    session['last'] = request.form['last']
-    session['pass1'] = request.form['pass1']
-    session['pass2'] = request.form['pass2']
 
-    if len(email) < 5 or email != EMAIL_REGEX:
+    if len(request.form['email']) < 5 or request.form['email'] != EMAIL_REGEX:
         flash('Please enter a valid email', 'error')
+        return redirect('/')
+    elif len(request.form['first']) < 1 or not request.form['first'].isalpha():
+        flash('Please enter a valid first name', 'error')
+        return redirect('/')
+    elif len(request.form['last']) < 1 or not request.form['last'].isalpha():
+        flash('Please enter a valid last name', 'error')
+        return redirect('/')
+    elif len(request.form['pass1']) < 8 or request.form['pass1'] != PASS_REGEX:
+        flash('Password must be at least 8 characters and include a capital letter and a number', 'error')
+        return redirect('/')
+    elif request.form['pass2'] != request.form['pass1']:
+        flash('Passwords must match', 'error')
+        return redirect('/')
+    else:
+        session['email'] = request.form['email']
+        session['first'] = request.form['first']
+        session['last'] = request.form['last']
+        session['pass1'] = request.form['pass1']
+        session['pass2'] = request.form['pass2']
+        return redirect('/success')
 
 app.run(debug=True)
