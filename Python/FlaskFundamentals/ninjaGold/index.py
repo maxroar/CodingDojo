@@ -16,7 +16,7 @@ def display_index():
 
 @app.route('/process_money', methods=['POST'])
 def update_money():
-    name_val = form.request['value']
+    name_val = request.form['value']
     money = 0
     phrase = ''
     if name_val == 'farm':
@@ -28,7 +28,6 @@ def update_money():
     elif name_val == 'casino':
         money = random.randrange(-50,31)
 
-
     session['total_gold'] += money
 
     if money < 0:
@@ -37,6 +36,5 @@ def update_money():
         session['activities'] += '<p class="green">You earned <strong>' + money + '</strong> gold at the ' + name_val + '!</p>'
 
     return redirect('/')
-
 
 app.run(debug=True)
