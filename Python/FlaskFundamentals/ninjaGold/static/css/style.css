@@ -2,3 +2,15 @@
   margin: 0;
   padding: 0;
 }
+
+.red{
+  color: red;
+}
+.green{
+  color: green;
+}
+.activityBox{
+  height: 250px;
+  border: 1px solid black;
+  overflow: scroll;
+}

@@ -7,16 +7,13 @@ app.secret_key = 'key'
 def display_index():
     if not 'total_gold' in session:
         session['total_gold'] = 0
-        session['activities'] = ''
-
-
-
+        session['activities'] = {}
     return render_template('index.html')
 
 
 @app.route('/process_money', methods=['POST'])
 def update_money():
-    name_val = request.form['value']
+    name_val = request.form['building']
     money = 0
     phrase = ''
     if name_val == 'farm':
@@ -31,9 +28,11 @@ def update_money():
     session['total_gold'] += money
 
     if money < 0:
-        session['activities'] += '<p class="red">Oh noooooo you lost <strong>' + abs(money) + '</strong> gold at the casino!</p>'
+        session['activities'] += '<p class="red">Oh noooooo you lost <strong>' + str(abs(money)) + '</strong> gold at the casino!</p>'
     else:
-        session['activities'] += '<p class="green">You earned <strong>' + money + '</strong> gold at the ' + name_val + '!</p>'
+        session['activities'] += '<p class="green">You earned <strong>' + str(money) + '</strong> gold at the ' + name_val + '!</p>'
+
+    print(session['activities'])
 
     return redirect('/')
 
