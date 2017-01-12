@@ -17,13 +17,13 @@ def display_index():
 def update_money():
     name_val = form.request['value']
     money = 0
-    if name_val = 'farm':
+    if name_val == 'farm':
         money = random.randrange(10,21)
-    elif name_val = 'farm':
+    elif name_val == 'farm':
         money = random.randrange(5,11)
-    elif name_val = 'farm':
+    elif name_val == 'farm':
         money = random.randrange(2,6)
-    elif name_val = 'farm':
+    elif name_val == 'farm':
         money = random.randrange(-50,31)
 
 
