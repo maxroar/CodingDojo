@@ -21,7 +21,7 @@ def display_index():
 
     return render_template('index.html')
 
-@app.route('/form_submit')
+@app.route('/form_submit', methods=['POST'])
 def on_submit():
 
     if len(request.form['email']) < 5 or request.form['email'] != EMAIL_REGEX:
