@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, request, session
-import random, datetime
+import random
+import datetime
 app = Flask(__name__)
 app.secret_key = 'key'
 
@@ -43,8 +44,7 @@ def update_money():
         log['text1'] = 'You earned '
         log['class'] = 'green'
 
-    print(session['activities'])
-    session.activities.append(log)
+    session['activities'].append(log)
     print(session['activities'])
     return redirect('/')
 

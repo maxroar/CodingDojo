@@ -3,9 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title>ksg</title>
+    <link rel="stylesheet" type='text/css' href="{{url_for('static', filename='css/style.css')}}">
+    <script src="{{url_for('static', filename='js/sscript.js')}}" type='text/javascript' charset="utf-8"></script>
   </head>
   <body>
     <h1>hey guy</h1>
     <p>My name is {{name}}.</p>
+    <p>Phrase: {{phrase}}</p>
+    <p>Times: {{times}}</p>
+    {% for count in range(0,times): %}
+      <p>{{phrase}}</p>
+    {% endfor %}
   </body>
 </html>
