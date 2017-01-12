@@ -53,8 +53,7 @@
       <div class="col-xs-12 activitityBox">
         <p>Activity:</p>
         {% for num in session['activities'] %}
-          {{session['activities']['session_class']}}
-          {{session['activities']['session_class']}}
+          <p><span class="timestamp">{{session['activities']['timestamp']}}</span> <span class="{{session['activities']['class']}}"{{session['activities']['text1']}} {{session['activities']['amount']}} {{session['activities']['text2']}} {{session['activities']['text3']}}</span></p>
         {% endfor %}
       </div>
     </div>

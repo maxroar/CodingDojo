@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, request, session
-import random
+import random, datetime
 app = Flask(__name__)
 app.secret_key = 'key'
 
@@ -7,7 +7,8 @@ app.secret_key = 'key'
 def display_index():
     if not 'total_gold' in session:
         session['total_gold'] = 0
-        session['activities'] = {}
+    if not 'activities' in session:
+        session['activities'] = []
     return render_template('index.html')
 
 
@@ -27,13 +28,24 @@ def update_money():
 
     session['total_gold'] += money
 
+    stamp = datetime.datetime.now().strftime('%B %d, %Y %I:%M%p')
+
+    log = {}
+    log['timestamp'] = stamp
+    log['amount'] = str(abs(money))
+    log['text2'] = ' gold at the '
+    log['text3'] = name_val + '!'
+
     if money < 0:
-        session['activities'] += '<p class="red">Oh noooooo you lost <strong>' + str(abs(money)) + '</strong> gold at the casino!</p>'
+        log['text1'] = 'Oh noooooo you lost '
+        log['class'] = 'red'
     else:
-        session['activities'] += '<p class="green">You earned <strong>' + str(money) + '</strong> gold at the ' + name_val + '!</p>'
+        log['text1'] = 'You earned '
+        log['class'] = 'green'
 
     print(session['activities'])
-
+    session.activities.append(log)
+    print(session['activities'])
     return redirect('/')
 
 app.run(debug=True)
