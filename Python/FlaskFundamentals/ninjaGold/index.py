@@ -1,10 +1,11 @@
 from flask import Flask, render_template, redirect, request, session
 import random
 app = Flask(__name__)
+app.secret_key = 'key'
 
 @app.route('/')
 def display_index():
-    if not session['total_gold']:
+    if not 'total_gold' in session:
         session['total_gold'] = 0
         session['activities'] = ''
 
