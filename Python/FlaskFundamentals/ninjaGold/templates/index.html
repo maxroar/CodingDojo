@@ -3,14 +3,41 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
     <link href="{{url_for('static', filename='css/style.css')}}" type="text/css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
     <script type="text/javascript" src="{{url_for('static', filename='js/sscript.js')}}"></script>
   </head>
   <body>
-    <form action="/proccess_money" method="post">
-      <input type="hidden" name="building" value="farm">
-      <input type="submit" value="Find Gold!">
-    </form>
+    <div class="row">
+      <h1>Total Gold : {{total}}</h1>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">
+        <form action="/process_money">
+          <input type="hidden" name="farm" value="farm">
+          <input type="submit" value="Find Gold!">
+        </form>
+      </div>
+      <div class="col-xs-3">
+        <form action="/process_money">
+          <input type="hidden" name="building" value="farm">
+          <input type="submit" value="Find Gold!">
+        </form>
+      </div>
+      <div class="col-xs-3">
+        <form action="/process_money">
+          <input type="hidden" name="building" value="farm">
+          <input type="submit" value="Find Gold!">
+        </form>
+      </div>
+      <div class="col-xs-3">
+        <form action="/process_money">
+          <input type="hidden" name="building" value="farm">
+          <input type="submit" value="Find Gold!">
+        </form>
+      </div>
+    </div>
   </body>
 </html>
