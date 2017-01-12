@@ -13,7 +13,7 @@ def display_index():
     return render_template('index.html')
 
 
-@app.route('/process_money', methods='POST')
+@app.route('/process_money', methods=['POST'])
 def update_money():
     name_val = form.request['value']
     money = 0
@@ -26,7 +26,7 @@ def update_money():
     elif name_val == 'farm':
         money = random.randrange(-50,31)
 
-    
+
 
 
 
