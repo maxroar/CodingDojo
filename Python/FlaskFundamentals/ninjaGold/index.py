@@ -26,7 +26,7 @@ def update_money():
     elif name_val == 'farm':
         money = random.randrange(-50,31)
 
-
+    
 
 
 
