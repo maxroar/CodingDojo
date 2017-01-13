@@ -48,4 +48,8 @@ def update_money():
     print(session['activities'])
     return redirect('/')
 
+@app.route('/clear')
+def session_clear():
+    session.clear()
+
 app.run(debug=True)
