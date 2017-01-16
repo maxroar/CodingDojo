@@ -13,5 +13,12 @@ def display_index():
 def create():
     #add a friend
     return redirect('/')
+@app.route('/friends/<friend_id>')
+def show(friend_id):
+    query = 'SELECT * FROM friends WHERE id = :specific_id'
+    data = {'specific_id': friend_id}
+    friends = mysql.query_db(query, data)
+    print(friends)
+    return render_template('index.html', one_friend=friends[0])
 
 app.run(debug=True)
