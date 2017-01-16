@@ -8,7 +8,6 @@ mysql = MySQLConnector(app, 'friendsdb')
 @app.route('/')
 def display_index():
     friends = mysql.query_db("SELECT * FROM friends;")
-    print(friends);
     return render_template('index.html', all_friends=friends)
 #route for individual friends from the friends table
 @app.route('/friends/<friend_id>/edit')
@@ -41,9 +40,9 @@ def update(friend_id):
     mysql.query_db(query, data)
     return redirect('/')
 #a route to remove friends from the db
-@app.route('/remove_friend/<friend_id>', methods=['post'])
-def delete():
-    query = 'DELETE FROM friends WHERE id = :id'
+@app.route('/friends/<friend_id>/delete', methods=['post'])
+def destroy(friend_id):
+    query = 'DELETE FROM friends WHERE id = :friend_id'
     data = {
         'id' : friend_id
     }
