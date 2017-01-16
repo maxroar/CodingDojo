@@ -1,5 +1,7 @@
-from flask import Flask, render_template, redirect, request, session, flash, bcrypt
+from flask import Flask, render_template, redirect, request, session, flash
 from mysqlconnection import MySQLConnector
+from flask.ext.bcrypt import Bcrypt
+import re
 app = Flask(__name__)
 app.secret_key = 'key' #change this
 
