@@ -24,9 +24,16 @@
         </form>
         <hr>
       {% endfor %}
+      <h2>Add a Friend</h2>
+      <form action='/friends' method='POST'>
+        <label for="first_name">First Name:<input type="text" name="first_name" id="first_name"></label>
+        <label for="last_name">Last Name:<input type="text" name="last_name" id="last_name"></label>
+        <label for="occupation">Occupation:<input type="text" name="occupation" id="occupation"></label>
+        <input type="submit" value="Add">
+      </form>
     {% elif one_friend %}
       <p>ID: {{one_friend['id']}}</p>
-      <form class="" action="/friends/{{friend['id']}}/update" method="post">
+      <form class="" action="/friends/{{one_friend['id']}}/update" method="post">
         <label for="first_name">First Name:<input type="text" name="first_name" id="first_name" value="{{one_friend['first_name']}}"></label>
         <label for="last_name">Last Name:<input type="text" name="last_name" id="last_name" value="{{one_friend['last_name']}}"></label>
         <label for="occupation">Occupation:<input type="text" name="occupation" id="occupation" value="{{one_friend['occupation']}}"></label>
@@ -34,12 +41,5 @@
       </form>
       <hr>
     {% endif %}
-    <h2>Add a Friend</h2>
-    <form action='/friends' method='POST'>
-      <label for="first_name">First Name:<input type="text" name="first_name" id="first_name"></label>
-      <label for="last_name">Last Name:<input type="text" name="last_name" id="last_name"></label>
-      <label for="occupation">Occupation:<input type="text" name="occupation" id="occupation"></label>
-      <input type="submit" value="Add">
-    </form>
   </body>
 </html>

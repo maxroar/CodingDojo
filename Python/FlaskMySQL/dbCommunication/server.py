@@ -29,9 +29,9 @@ def create():
     mysql.query_db(query, data)
     return redirect('/')
 #a route to update friend entries
-@app.route('/friends/<friend_id>/update', methods=['get'])
-def update(id):
-    query = 'UPDATE friends SET first_name = :first_name, last_name = :last_name, occupation = :occupation updated_at = NOW()'
+@app.route('/friends/<friend_id>/update', methods=['post'])
+def update(friend_id):
+    query = 'UPDATE friends SET first_name = :first_name, last_name = :last_name, occupation = :occupation, updated_at = NOW()'
     data = {
         'first_name': request.form['first_name'],
         'last_name': request.form['last_name'],
