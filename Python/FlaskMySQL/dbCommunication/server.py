@@ -30,7 +30,7 @@ def create():
 #a route to update friend entries
 @app.route('/friends/<friend_id>/update', methods=['post'])
 def update(friend_id):
-    query = 'UPDATE friends SET first_name = :first_name, last_name = :last_name, occupation = :occupation, updated_at = NOW()'
+    query = 'UPDATE friends SET first_name = :first_name, last_name = :last_name, occupation = :occupation, updated_at = NOW() WHERE id = %s' % friend_id
     data = {
         'first_name': request.form['first_name'],
         'last_name': request.form['last_name'],
@@ -42,7 +42,7 @@ def update(friend_id):
 #a route to remove friends from the db
 @app.route('/friends/<friend_id>/delete', methods=['post'])
 def destroy(friend_id):
-    query = 'DELETE FROM friends WHERE id = :friend_id'
+    query = 'DELETE FROM friends WHERE id = %s' % friend_id
     data = {
         'id' : friend_id
     }
