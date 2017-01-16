@@ -11,7 +11,13 @@ def display_index():
     return render_template('index.html', all_friends=friends)
 @app.route('/friends', methods=['post'])
 def create():
-    #add a friend
+    query = 'INSERT INTO friends (first_name, last_name, occupation, created_at, updated_at) VALUES (:first_name, :last_name, :occupation, NOW(), NOW())'
+    data = {
+        'first_name': request.form['first_name'],
+        'last_name': request.form['last_name'],
+        'occupation': request.form['occupation']
+    }
+    mysql.query_db(query, data)
     return redirect('/')
 @app.route('/friends/<friend_id>')
 def show(friend_id):
