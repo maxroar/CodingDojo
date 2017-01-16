@@ -8,6 +8,18 @@
     <script type="text/javascript" src="{{url_for('static', filename='js/script.js')}}"></script>
   </head>
   <body>
+    {{emails}}
+    {% with errors = get_flashed_messages(category_filter=["error"]) %}
+      {% if errors %}
+        <div class="">
+          <ul>
+            {%- for msg in errors %}
+              <li class='error'>{{msg}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+    {% endwith %}
     <p><span class='error'>{{error}}</span></p>
     <form class="" action="/add" method="post">
       <input type="text" name="email" value="">
