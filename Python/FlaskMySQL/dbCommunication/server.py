@@ -11,7 +11,7 @@ def display_index():
     print(friends);
     return render_template('index.html', all_friends=friends)
 #route for individual friends from the friends table
-@app.route('/friends/<friend_id>')
+@app.route('/friends/<friend_id>/edit')
 def show(friend_id):
     query = 'SELECT * FROM friends WHERE id = :specific_id'
     data = {'specific_id': friend_id}
@@ -29,8 +29,8 @@ def create():
     mysql.query_db(query, data)
     return redirect('/')
 #a route to update friend entries
-@app.route('/update_friend/<friend_id>', methods=['post'])
-def update():
+@app.route('/friends/<friend_id>/update', methods=['get'])
+def update(id):
     query = 'UPDATE friends SET first_name = :first_name, last_name = :last_name, occupation = :occupation updated_at = NOW()'
     data = {
         'first_name': request.form['first_name'],

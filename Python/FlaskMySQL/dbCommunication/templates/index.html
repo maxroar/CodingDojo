@@ -16,13 +16,22 @@
         <p>First Name: {{friend['first_name']}}</p>
         <p>Last Name: {{friend['last_name']}}</p>
         <p>Occupation: {{friend['occupation']}}</p>
+        <form class="" action="/friends/{{friend['id']}}/edit" method="get">
+          <input type="submit" name="edit" value="Edit User">
+        </form>
+        <form class="" action="/friends/{{friend['id']}}/delete" method="post">
+          <input type="submit" name="destroy" value="Delete User">
+        </form>
         <hr>
       {% endfor %}
     {% elif one_friend %}
       <p>ID: {{one_friend['id']}}</p>
-      <p>First Name: {{one_friend['first_name']}}</p>
-      <p>Last Name: {{one_friend['last_name']}}</p>
-      <p>Occupation: {{one_friend['occupation']}}</p>
+      <form class="" action="/friends/{{friend['id']}}/update" method="post">
+        <label for="first_name">First Name:<input type="text" name="first_name" id="first_name" value="{{one_friend['first_name']}}"></label>
+        <label for="last_name">Last Name:<input type="text" name="last_name" id="last_name" value="{{one_friend['last_name']}}"></label>
+        <label for="occupation">Occupation:<input type="text" name="occupation" id="occupation" value="{{one_friend['occupation']}}"></label>
+        <input type="submit" name="" value="Update Record">
+      </form>
       <hr>
     {% endif %}
     <h2>Add a Friend</h2>
