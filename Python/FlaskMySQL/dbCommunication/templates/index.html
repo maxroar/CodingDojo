@@ -8,15 +8,23 @@
     <script type="text/javascript" src="{{url_for('static', filename='js/script.js')}}"></script>
   </head>
   <body>
-    {{all_friends}}
-    <h1>These are all my friends!</h1>
-    {% for friend in all_friends %}
-      <p>ID: {{friend['id']}}</p>
-      <p>First Name: {{friend['first_name']}}</p>
-      <p>Last Name: {{friend['last_name']}}</p>
-      <p>Occupation: {{friend['occupation']}}</p>
+    {% if all_friends %}
+      {{all_friends}}
+      <h1>These are all my friends!</h1>
+      {% for friend in all_friends %}
+        <p>ID: {{friend['id']}}</p>
+        <p>First Name: {{friend['first_name']}}</p>
+        <p>Last Name: {{friend['last_name']}}</p>
+        <p>Occupation: {{friend['occupation']}}</p>
+        <hr>
+      {% endfor %}
+    {% elif one_friend %}
+      <p>ID: {{one_friend['id']}}</p>
+      <p>First Name: {{one_friend['first_name']}}</p>
+      <p>Last Name: {{one_friend['last_name']}}</p>
+      <p>Occupation: {{one_friend['occupation']}}</p>
       <hr>
-    {% endfor %}
+    {% endif %}
     <h2>Add a Friend</h2>
     <form action='/friends' method='POST'>
       <label for="first_name">First Name:<input type="text" name="first_name" id="first_name"></label>
