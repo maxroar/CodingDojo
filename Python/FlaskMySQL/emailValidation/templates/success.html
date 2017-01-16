@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="{{url_for('static', filename='css/style.css')}}" type="text/css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/script.js')}}"></script>
+  </head>
+  <body>
+    {% with errors = get_flashed_messages(category_filter=["error"]) %}
+      {% if errors %}
+        <div class="">
+          <ul>
+            {%- for msg in errors %}
+              <li class='success'>{{msg}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+    {% endwith %}
+    <ul>
+    {% for item in emails %}
+      <li><form action="/delete/{{item['id']}}" method="post">
+        {{item['email']}} -- <input type="submit" name="" value="Delete User">
+    {% endfor %}
+    </ul>
+  </body>
+</html>
