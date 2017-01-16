@@ -8,6 +8,7 @@
     <script type="text/javascript" src="{{url_for('static', filename='js/script.js')}}"></script>
   </head>
   <body>
+    <p><span class='error'>{{error}}</span></p>
     <form class="" action="/add" method="post">
       <input type="text" name="email" value="">
       <input type="submit" value="Add">

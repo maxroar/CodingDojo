@@ -14,7 +14,9 @@ def display_index():
     return render_template('index.html', emails=emails)
 @app.route('/add', methods=['post'])
 def create():
-    if not
+    if not EMAIL_REGEX.match(request.form['email']):
+        error = 'Please enter a valid email address.'
+        return redirect('/', error=error)
     query = 'INSERT INTO emails (email, created_at, updated_at) VALUES (:email, NOW(), NOW())'
     data = {
         'email': request.form['email']
