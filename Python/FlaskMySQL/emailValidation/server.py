@@ -29,13 +29,13 @@ def create():
     mysql.query_db(query, data)
     flash('The email address you entered: %s is valid!' % request.form['email'], 'error')
     return redirect('/success')
-@app.route('/delete/<userid>', methods=['post'])
-def delete_entry():
-    query = 'DELETE FROM emails WHERE id = :id'
-    data = {
-        'id': userid
-    }
-    mysql.query_db(query, data)
-    flash('The user has been deleted.', 'error')
-    return redirect('/success')
+# @app.route('/delete/<userid>', methods=['post'])
+# def delete_entry():
+#     query = 'DELETE FROM emails WHERE id = :id'
+#     data = {
+#         'id': userid
+#     }
+#     mysql.query_db(query, data)
+#     flash('The user has been deleted.', 'error')
+#     return redirect('/success')
 app.run(debug=True)
