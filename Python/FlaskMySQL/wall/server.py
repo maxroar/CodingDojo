@@ -150,4 +150,21 @@ def add_comment():
     flash('GREAT SUCCESS', 'error')
     return redirect('/wall')
 
+@app.route('/delete_post', methods=['post'])
+def delete_post():
+    #must delete comments related to post before deleting post due to foreign key errors
+    query = 'DELETE FROM comments WHERE post_id = :pid'
+    data = {'pid': request.form['del_post_id']}
+    mysql.query_db(query, data)
+    query = 'DELETE FROM posts WHERE id = :pid'
+    mysql.query_db(query, data)
+    return redirect('/wall')
+
+@app.route('/delete_comment', methods=['post'])
+def delete_comment():
+    query = 'DELETE FROM comments WHERE id = :cid'
+    data = {'cid': request.form['del_comment_id']}
+    mysql.query_db(query, data)
+    return redirect('/wall')
+
 app.run(debug=True)
