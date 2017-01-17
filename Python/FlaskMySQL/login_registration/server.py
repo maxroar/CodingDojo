@@ -59,9 +59,14 @@ def register_user():
         'pw_hash': bcrypt.generate_password_hash(request.form['pass1'])
     }
     mysql.query_db(query, data)
-    return redirect('/')
 
-@app.route('/login', methods=['post'])
+    #set session id so the user is auto logged in
+    query = 'SELECT id FROM users WHERE email = "{}"'.format(request.form['email'])
+    uid = mysql.query_db(query)
+    session['id'] = request.form(['email'])
+    return redirect('/success')
+
+@app.route('/login', methods=['POST'])
 def login():
     # data validation
     query = "SELECT * FROM users WHERE email = '{}'".format(request.form['email'])
@@ -74,18 +79,24 @@ def login():
     if not bcrypt.check_password_hash(user[0]['password'], request.form['pass1']):
         flash('Please enter the correct password.', 'error')
 
-    session['id'] = user[0]['id']
+    session['id'] = request.form['email']
 
     return redirect('/success')
 
 @app.route('/success')
 def display_profile():
-    query = 'SELECT * FROM users WHERE id = %s' % session['id']
+    print session['id']
+    query = 'SELECT * FROM users WHERE email = "{}"'.format(session['id'])
     user_data = mysql.query_db(query)
-    user = user_data[0]
+    print user_data
+    user = user_data
+    print user
     return render_template('profile.html', user = user)
 
-
+@app.route('/clear', methods=['post'])
+def clear_session():
+    session.clear()
+    return redirect('/')
 
 
 # an example of running a query
