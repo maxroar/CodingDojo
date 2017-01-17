@@ -2,3 +2,8 @@
   margin: 0;
   padding: 0;
 }
+.index_form{
+  width:40%;
+  display: inline-block;
+  border: 1px solid green;
+}

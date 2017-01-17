@@ -4,6 +4,7 @@ from flask.ext.bcrypt import Bcrypt
 import re
 app = Flask(__name__)
 app.secret_key = 'key' #change this
+bcrypt = Bcrypt(app)
 
 mysql = MySQLConnector(app, 'login_registration')
 
@@ -17,6 +18,7 @@ REGEX_PASS = re.compile(r'^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*
 @app.route('/')
 def display_index():
     return render_template('index.html')
+
 @app.route('/register', methods=['post'])
 def register_user():
     # data validation
@@ -39,17 +41,52 @@ def register_user():
         flash('Passwords must match.', 'error')
         validation_error = False
 
-    if not validation_error:
+    if validation_error == False:
         return redirect('/')
 
-    query = 'INSERT INTO users (first_name, last_name, email, created_at, updated_at) VALUES (:first_name, :last_name, :email, NOW(), NOW())'
+    query = "SELECT id FROM users WHERE email = '{}'".format(request.form['email'])
+    userid = mysql.query_db(query)
+
+    if len(userid)>0:
+        flash('That email is already in use. Please use the login form.', 'error')
+        return redirect('/')
+
+    query = 'INSERT INTO users (first_name, last_name, email, password, created_at, updated_at) VALUES (:fname, :lname, :email, :pw_hash, NOW(), NOW())'
     data = {
-        'first_name': request.form['first_name'],
-        'last_name': request.form['last_name'],
-        'occupation': request.form['occupation']
+        'fname': request.form['first_name'],
+        'lname': request.form['last_name'],
+        'email': request.form['email'],
+        'pw_hash': bcrypt.generate_password_hash(request.form['pass1'])
     }
     mysql.query_db(query, data)
     return redirect('/')
+
+@app.route('/login', methods=['post'])
+def login():
+    # data validation
+    query = "SELECT * FROM users WHERE email = '{}'".format(request.form['email'])
+    user = mysql.query_db(query)
+    print user
+    if len(user)<1:
+        flash('We could not find that email. If you haven\'t registered, please use the registration form.', 'error')
+        return redirect('/')
+
+    if not bcrypt.check_password_hash(user[0]['password'], request.form['pass1']):
+        flash('Please enter the correct password.', 'error')
+
+    session['id'] = user[0]['id']
+
+    return redirect('/success')
+
+@app.route('/success')
+def display_profile():
+    query = 'SELECT * FROM users WHERE id = %s' % session['id']
+    user_data = mysql.query_db(query)
+    user = user_data[0]
+    return render_template('profile.html', user = user)
+
+
+
 
 # an example of running a query
 print mysql.query_db("SELECT * FROM users")
