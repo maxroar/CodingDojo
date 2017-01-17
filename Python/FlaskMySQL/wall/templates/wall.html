@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="{{ url_for('static', filename='css/style.css') }}" type="text/css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- error message check from flash -->
+      {% with errors = get_flashed_messages(category_filter=["error"]) %}
+        {% if errors %}
+          <div class="error_container">
+            <ul>
+              {%- for msg in errors %}
+                <li class='error_message'>{{msg}}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      {% endwith %}
+      <!-- user data -->
+      {{user}}
+      <form class="" action="/clear" method="get">
+        <button type="submit" name="button" class="btn btn-primary">Log Out</button>
+      </form>
+      <h1>Hey, {{user['first_name']}}, welcome to the wall!</h1>
+      <div class="new_post">
+        <form class="" action="/submit_post" method="post">
+          <input type="text" name="new_post_text" value="">
+          <input type="submit" name="" value="New Post">
+        </form>
+      </div>
+      <div class="messages">
+
+        <div class="row">
+          {% for post in posts %}
+          <div class="col-xs-12">
+            <h2>{{post['first_name']}}:</h2>
+            <p>{{post['text']}}</p>
+            <p class="timestamp">{{post['updated_at']}}</p>
+            <form class="" action="/add_comment" method="post">
+              <input type="hidden" name="comment_post" value="{{post['id']}}">
+              <input type="text" name="comment_text" value="">
+              <input type="submit" name="" value="Comment">
+            </form>
+            {% if post['user_id'] == session['user_id'] %}
+              <form class="" action="delete_post" method="post">
+                <input type="hidden" name="{{post['id']}}" value="{{post.id}}">
+                <input type="submit" name="" value="Delete Post">
+              </form>
+            {% endif %}
+            {% for comment in comments %}
+              {% if comment.post_id == post.id %}
+                <h4>{{comment.first_name}}:</h4>
+                <p>{{comment.text}}</p>
+                <p class="timestamp">{{comment.created_at}}</p>
+              {% endif %}
+            {% endfor %}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
