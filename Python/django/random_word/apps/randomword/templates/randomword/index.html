@@ -6,10 +6,15 @@
   </head>
   <body>
     <h1>Random num</h1>
-    <h2>{{string_num}}</h2>
-    <form class="" action="/random_num" method="post">
+    <h2>{{request.session.name}}</h2>
+    <h3>Numbers Generated: {{request.session.num}}</h3>
+    <form class="" action="/" method="post">
       {% csrf_token %}
       <input type="submit" name="rand_sub" value="New String">
+    </form>
+    <form class="" action="/clear" method="post">
+      {% csrf_token %}
+      <input type="submit" name="" value="Clear">
     </form>
   </body>
 </html>
