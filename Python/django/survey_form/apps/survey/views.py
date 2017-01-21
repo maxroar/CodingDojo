@@ -19,7 +19,13 @@ def proccess(request):
         request.session['comment'] = request.POST['comment']
     return redirect('/success')
 def success(request):
-    return render(request, 'survey/success.html')
+    context = {
+        'name': request.session['name'],
+        'location': request.session['location'],
+        'language': request.session['language'],
+        'comment': request.session['comment']
+    }
+    return render(request, 'survey/success.html', context)
 def clear(request):
     request.session.flush()
     return redirect('/')
