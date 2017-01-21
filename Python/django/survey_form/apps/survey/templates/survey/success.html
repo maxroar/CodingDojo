@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>GREAT SUCCESS!!!!!</h1>
+    <h3>Thanks, {{request.session.name}}! Your info has been submitted.</h3>
+    <p>Location: {{request.session.location}}</p>
+    <p>Language: {{request.session.language}}</p>
+    <p>Comment: {{request.session.comment}}</p>
+    <form class="" action="/clear" method="post">
+      {% csrf_token %}
+      <input type="submit" name="o" value="ya">
+    </form>
+  </body>
+</html>
