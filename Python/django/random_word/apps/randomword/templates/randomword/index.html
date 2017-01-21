@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Random num</h1>
+    <h2>{{string_num}}</h2>
+    <form class="" action="/random_num" method="post">
+      {% csrf_token %}
+      <input type="submit" name="rand_sub" value="New String">
+    </form>
+  </body>
+</html>

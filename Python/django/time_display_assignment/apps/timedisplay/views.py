@@ -1,8 +1,13 @@
 from django.shortcuts import render, HttpResponse
+import datetime
+
+
 
 # Create your views here.
-def show_time(request):
+def index(request):
+    stuff = datetime.datetime.now()
     context={
-        'key': 'value'
+        'key': 'value',
+        'things': stuff
     }
-return render(request, 'timedisplay/index.html', context)
+    return render(request, 'timedisplay/index.html', context)
