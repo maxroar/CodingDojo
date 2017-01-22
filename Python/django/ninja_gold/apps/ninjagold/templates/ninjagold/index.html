@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Total Money: {{request.session.total}}</h1>
+    <form class="" action="/process_money" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="building" value="farm">
+      <h3>FARM: 10-20 gold</h3>
+      <input type="submit" name="" value="Select">
+    </form>
+    <form class="" action="/process_money" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="building" value="cave">
+      <h3>CAVE: 5-10 gold</h3>
+      <input type="submit" name="" value="Select">
+    </form>
+    <form class="" action="/process_money" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="building" value="house">
+      <h3>House: 2-5 gold</h3>
+      <input type="submit" name="" value="Select">
+    </form>
+    <form class="" action="/process_money" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="building" value="casino">
+      <h3>House: -50-50 gold</h3>
+      <input type="submit" name="" value="Select">
+    </form>
+    <form class="" action="/clear" method="post">
+      {% csrf_token %}
+      <input type="submit" name="" value="New Game">
+    </form>
+  </body>
+</html>
