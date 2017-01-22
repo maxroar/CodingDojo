@@ -3,8 +3,27 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    {% load staticfiles %}
   </head>
   <body>
-
+    {% if image == 'blue' %}
+    <img src="{% static 'images/blue.jpg' %}" alt="">
+    <h1>blue</h1>
+    {% elif image == 'turtles' %}
+    <img src="{% static 'images/turtles.jpg' %}" alt="">
+    <h1>turtles</h1>
+    {% elif image == 'red' %}
+    <img src="{% static 'images/red.jpg' %}" alt="">
+    <h1>red</h1>
+    {% elif image == 'purple' %}
+    <img src="{% static 'images/purple.jpg' %}" alt="">
+    <h1>purple</h1>
+    {% elif image == 'orange' %}
+    <img src="{% static 'images/orange.jpg' %}" alt="">
+    <h1>orange</h1>
+    {% elif image == 'megan' %}
+    <img src="{% static 'images/megan.jpg' %}" alt="">
+    <h1>thumbs</h1>
+    {% endif %}
   </body>
 </html>
