@@ -5,21 +5,32 @@
     <title></title>
   </head>
   <body>
+    <div class="errors">
+      {% if messages %}
+        {% for msg in messages %}
+          <p>{{msg}}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
     <div class="col-xs-6">
       <h2>Register</h2>
       <form class="" action="/register" method="post">
+        {% csrf_token %}
         First Name: <input type="text" name="first_name" value="">
         Last Name: <input type="text" name="last_name" value="">
         Email: <input type="text" name="email" value="">
         Password: <input type="password" name="pass1" value="">
         Confirm Password: <input type="password" name="pass2" value="">
+        <input type="submit" name="" value="Register">
       </form>
     </div>
     <div class="col-xs-6">
       <h2>Login</h2>
       <form class="" action="/login" method="post">
+        {% csrf_token %}
         Email: <input type="text" name="email" value="">
         Password: <input type="password" name="pass1" value="">
+        <input type="submit" name="" value="Log In">
       </form>
     </div>
   </body>
