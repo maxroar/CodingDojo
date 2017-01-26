@@ -3,8 +3,63 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
   </head>
   <body>
-    
+    <div class="errors">
+      {% if messages %}
+        {% for msg in messages %}
+          <p>{{msg}}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <div class="col-xs-9">
+      <h2>Welcome: {{first_name}}</h2>
+    </div>
+    <div class="col-xs-3">
+      <form class="" action="/logout" method="post">
+        {% csrf_token %}
+        <input type="submit" name="" value="Log Out" class="btn btn-primary">
+      </form>
+    </div>
+    <div class="">
+      <form class="" action="/add_message" method="post">
+        {% csrf_token %}
+        <input type="text" name="message" value="">
+        <input type="submit" name="" value="Add Post" class="btn btn-primary">
+      </form>
+    </div>
+    <div class="">
+      {% for post in posts %}
+        <p>{{post.message}}</p>
+        {% if post.user_id == request.session.user_id %}
+          <form class="" action="/delete_message{{post.id}}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="message_id" value="{{post.id}}">
+            <input type="submit" name="" value="Delete Post" class="btn btn-danger">
+          </form>
+        {% endif %}
+        <div class="">
+          <form class="" action="/add_comment/{{post.id}}" method="post">
+            {% csrf_token %}
+            <input type="text" name="comment" value="">
+            <input type="submit" name="" value="Add Comment" class="btn btn-primary">
+          </form>
+          {% for comment in comments %}
+            {% if comment.message_id == post.id %}
+              <p>{{comment.comment}}</p>
+              {% if comment.user_id == request.session.user_id %}
+                <form class="" action="/delete_comment/{{comment.id}}" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="message_id" value="{{post.id}}">
+                  <input type="submit" name="" value="Delete Comment" class="btn btn-danger">
+                </form>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+      {% endfor %}
+    </div>
   </body>
 </html>
