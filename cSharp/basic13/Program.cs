@@ -11,12 +11,14 @@ namespace ConsoleApplication
         {
             Console.WriteLine("Hello World!");
             Algos algos = new Algos();
-            int[] arr = {2,3,4,5};
-            int[] oddArr = algos.oddArr();
+            int[] arr = {-2, 2,3,4,5};
+            
+            int[] pos = algos.posOnly(arr);
 
-            for (int i = 0; i < oddArr.Length; i++){
-                System.Console.WriteLine(oddArr[i]);
+            foreach (int item in pos){
+                System.Console.WriteLine(item);
             }
+            
             
         }
     }

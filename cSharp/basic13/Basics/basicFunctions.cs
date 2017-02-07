@@ -59,5 +59,31 @@ namespace ConsoleApplication
             }
             return oddArr;
         }
+
+        public int greaterThanY(int[] arr, int y){
+            int count = 0;
+            foreach (int item in arr){
+                if (item > y){
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        public int[] squareVal(int[] arr){
+            for (int i = 0; i < arr.Length; i ++){
+                arr[i] *= arr[i];
+            }
+            return arr;
+        }
+
+        public int[] posOnly(int[] arr){
+            for (int i = 0; i < arr.Length; i ++){
+                if(arr[i] < 0){
+                    arr[i] = 0;
+                }
+            }
+            return arr;
+        }
     }
 }
