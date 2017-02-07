@@ -85,5 +85,44 @@ namespace ConsoleApplication
             }
             return arr;
         }
+
+        public Tuple<int, int, double> minMaxAvg(int[] arr){
+            int max = arr[0];
+            int min = arr[0];
+            int total = 0;
+            int count = 0;
+            foreach (int item in arr){
+                if(item > max){
+                    max = item;
+                }
+                if (item < min){
+                    min = item;
+                }
+                total += item;
+                count++;
+            }
+            return Tuple.Create(min, max, (double)total/(double)count);
+        }
+
+        public int[] shiftArr(int[] arr){
+            for (int i = 0; i < arr.Length-1; i ++){
+                arr[i] = arr[i+1];
+            }
+            arr[arr.Length-1] = 0;
+            return arr;
+        }
+
+        public object[] numToString(int[] arr){
+            object[] newArr = new object[arr.Length];
+            for (int i = 0; i < arr.Length-1; i ++){
+                if (arr[i] < 0){
+                    newArr[i] = "Dojo";
+                }else{
+                    newArr[i] = arr[i];
+                }
+            }
+            
+            return newArr;
+        }
     }
 }
