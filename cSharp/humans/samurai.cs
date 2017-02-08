@@ -5,10 +5,11 @@ namespace ConsoleApplication
     public class Samurai : Human
     {
 
-        public static 
+        public static int howmany = 0;
         public Samurai(string humanName) : base(humanName, 3, 3, 3, 200)
         {
             // Human wizard = new Human(humanName, 3, 25, 3, 50);
+            howmany++;
         }
 
 

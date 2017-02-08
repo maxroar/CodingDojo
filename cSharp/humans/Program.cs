@@ -16,6 +16,10 @@ namespace ConsoleApplication
             System.Console.WriteLine(blake.health);
             blake.fireball(pleb);
             System.Console.WriteLine(pleb.health);
+            Samurai sam = new Samurai("Sammy");
+            System.Console.WriteLine(Samurai.howmany);
+            Samurai pete = new Samurai("Petey");
+            System.Console.WriteLine(Samurai.howmany);
         }
     }
 }
