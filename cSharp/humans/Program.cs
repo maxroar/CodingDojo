@@ -12,6 +12,10 @@ namespace ConsoleApplication
             System.Console.WriteLine(pleb.health);
             max.attack(pleb);
             System.Console.WriteLine(pleb.health);
+            Wizard blake = new Wizard("Blake");
+            System.Console.WriteLine(blake.health);
+            blake.fireball(pleb);
+            System.Console.WriteLine(pleb.health);
         }
     }
 }

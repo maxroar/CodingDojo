@@ -88,4 +88,7 @@
 --reference:/home/max/.nuget/packages/System.Xml.ReaderWriter/4.3.0/ref/netstandard1.3/System.Xml.ReaderWriter.dll
 --reference:/home/max/.nuget/packages/System.Xml.XDocument/4.3.0/ref/netstandard1.3/System.Xml.XDocument.dll
 /home/max/github/codingdojo/cSharp/humans/Program.cs
+/home/max/github/codingdojo/cSharp/humans/wizards.cs
 /home/max/github/codingdojo/cSharp/humans/humans.cs
+/home/max/github/codingdojo/cSharp/humans/samurai.cs
+/home/max/github/codingdojo/cSharp/humans/ninjas.cs
