@@ -76,8 +76,6 @@ namespace ConsoleApplication
                 }
             }
 
-
-
             return newNames.ToArray();
         }
     }
