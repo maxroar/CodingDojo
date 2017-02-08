@@ -82,6 +82,7 @@
 -r:"/home/max/.nuget/packages/System.Threading.Timer/4.3.0/ref/netstandard1.2/System.Threading.Timer.dll"
 -r:"/home/max/.nuget/packages/System.Xml.ReaderWriter/4.3.0/ref/netstandard1.3/System.Xml.ReaderWriter.dll"
 -r:"/home/max/.nuget/packages/System.Xml.XDocument/4.3.0/ref/netstandard1.3/System.Xml.XDocument.dll"
+"/home/max/github/codingdojo/cSharp/humans/enemies.cs"
 "/home/max/github/codingdojo/cSharp/humans/Program.cs"
 "/home/max/github/codingdojo/cSharp/humans/wizards.cs"
 "/home/max/github/codingdojo/cSharp/humans/humans.cs"
