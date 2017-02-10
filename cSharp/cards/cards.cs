@@ -1,6 +1,3 @@
-using System;
-
-
 namespace ConsoleApplication
 {
     public class Card
