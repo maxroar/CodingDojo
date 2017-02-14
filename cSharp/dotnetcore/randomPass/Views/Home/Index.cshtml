@@ -4,12 +4,10 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
-            <p>Total generated: @ViewBag.totalGen</p>
+            <p >Total generated: <span class="totalAttempts">@ViewBag.totalNum</span></p>
             <h1>Random Password:</h1>
-            <h3 id="pass"></h3>
-            <form action="generate" method="post">
-                <input type="submit" value="New Number" class="btn btn-primary"/>
-            </form>
+            <h3 id="pass" class="randomString">@ViewBag.randomString</h3>
+            <input type="submit" value="New Number" class="btn btn-primary generate"/>
         </div>
     </div>
 </div>

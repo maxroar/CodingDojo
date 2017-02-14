@@ -17,13 +17,21 @@ namespace randomPass.Controllers
                 int charIdx = rand.Next(0,68);
                 randomString += chars[charIdx];
             }
-
+            return randomString;
         }
         // GET: /Home/
         [HttpGet]
         [Route("")]
         public IActionResult Index()
         {
+            string sessionString = HttpContext.Session.GetString("randomString");
+            if (sessionString is String == false)
+            {
+                HttpContext.Session.SetString("randomString", RandString());
+                HttpContext.Session.SetInt32("totalNum", 1);
+            }
+            ViewBag.randomString = HttpContext.Session.GetString("randomString");
+            ViewBag.totalNum = HttpContext.Session.GetInt32("totalNum");
             return View();
         }
 
@@ -31,7 +39,16 @@ namespace randomPass.Controllers
         [RouteAttribute("generate")]
         public IActionResult Generate()
         {
+            int totalAttempts = (int)HttpContext.Session.GetInt32("totalNum");
+            HttpContext.Session.SetString("randomString", RandString());
+            HttpContext.Session.SetInt32("totalNum", totalAttempts+1);
 
+            return Json(
+                new{
+                    randomString = HttpContext.Session.GetString("randomString"),
+                    totalNum = HttpContext.Session.GetInt32("totalNum")
+                }
+            );
         }
     }
 }
