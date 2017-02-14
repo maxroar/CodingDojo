@@ -21,19 +21,21 @@ namespace dododachi.Controllers
         [Route("")]
         public IActionResult Index()
         {
-            int energy = (int)HttpContext.Session.GetInt32("energy");
-            if (energy is Int32 == false)
+            // int? energy = (int)HttpContext.Session.GetInt32("energy");
+            if (HttpContext.Session.GetInt32("energy") == null)
             {
                 HttpContext.Session.SetInt32("energy", 50);
                 HttpContext.Session.SetInt32("happiness", 20);
                 HttpContext.Session.SetInt32("meals", 3);
                 HttpContext.Session.SetInt32("fullness", 20);
                 HttpContext.Session.SetString("message", "Welcome to dojodachi!");
+                HttpContext.Session.SetString("image", "welcome.jpg");
             }
             ViewBag.energy = HttpContext.Session.GetInt32("energy");
             ViewBag.happiness = HttpContext.Session.GetInt32("happiness");
             ViewBag.meals = HttpContext.Session.GetInt32("meals");
             ViewBag.fullness = HttpContext.Session.GetInt32("fullness");
+            ViewBag.image = HttpContext.Session.GetString("image");
             return View();
         }
 
@@ -53,8 +55,10 @@ namespace dododachi.Controllers
                     int increase = rand.Next(5,10);
                     HttpContext.Session.SetInt32("fullness", fullness + increase);
                     HttpContext.Session.SetString("message", $"You fed your dojodachi! Fullness: +{increase} Meals: -1");
+                    HttpContext.Session.SetString("image", "eat.jpg");
                 }else{
                     HttpContext.Session.SetInt32("meals", meals-1);
+                    HttpContext.Session.SetString("image", "unpleased.jpg");
                     HttpContext.Session.SetString("message", $"Your dojodachi is not pleased by your offerring! Fullness: unchanged Meals: -1");
                 }
                 
@@ -67,7 +71,8 @@ namespace dododachi.Controllers
                     happiness = HttpContext.Session.GetInt32("happiness"),
                     meals = HttpContext.Session.GetInt32("meals"),
                     fullness = HttpContext.Session.GetInt32("fullness"),
-                    message = HttpContext.Session.GetString("message")
+                    message = HttpContext.Session.GetString("message"),
+                    image = HttpContext.Session.GetString("image")
                 }
             );
         }
@@ -88,9 +93,11 @@ namespace dododachi.Controllers
                     int increase = rand.Next(5,10);
                     HttpContext.Session.SetInt32("happiness", happiness + increase);
                     HttpContext.Session.SetString("message", $"You fed your dojodachi! Happiness: +{increase} Energy: -5");
+                    HttpContext.Session.SetString("image", "play.jpg");
                 }else{
-                    HttpContext.Session.SetInt32("energy", energy-1);
-                    HttpContext.Session.SetString("message", $"Your dojodachi is not pleased by your offerring! Happiness: unchanged Energy: -1");
+                    HttpContext.Session.SetInt32("energy", energy-5);
+                    HttpContext.Session.SetString("image", "unpleased.jpg");
+                    HttpContext.Session.SetString("message", $"Your dojodachi is not pleased by your offerring! Happiness: unchanged Energy: -5");
                 }
                 
             }
@@ -102,7 +109,8 @@ namespace dododachi.Controllers
                     happiness = HttpContext.Session.GetInt32("happiness"),
                     meals = HttpContext.Session.GetInt32("meals"),
                     fullness = HttpContext.Session.GetInt32("fullness"),
-                    message = HttpContext.Session.GetString("message")
+                    message = HttpContext.Session.GetString("message"),
+                    image = HttpContext.Session.GetString("image")
                 }
             );
         }
@@ -120,6 +128,7 @@ namespace dododachi.Controllers
                 int addMeals = rand.Next(1,3);
                 int meals = (int)HttpContext.Session.GetInt32("meals");
                 HttpContext.Session.SetInt32("meals", meals + addMeals);
+                HttpContext.Session.SetString("image", "worked.jpg");
                 HttpContext.Session.SetString("message", $"You worked! Meals: +{addMeals} Energy: -5");
             }
             
@@ -130,7 +139,8 @@ namespace dododachi.Controllers
                     happiness = HttpContext.Session.GetInt32("happiness"),
                     meals = HttpContext.Session.GetInt32("meals"),
                     fullness = HttpContext.Session.GetInt32("fullness"),
-                    message = HttpContext.Session.GetString("message")
+                    message = HttpContext.Session.GetString("message"),
+                    image = HttpContext.Session.GetString("image")
                 }
             );
         }
@@ -147,6 +157,7 @@ namespace dododachi.Controllers
             HttpContext.Session.SetInt32("fullness", fullness-5);
             HttpContext.Session.SetInt32("happiness", happiness-5);
             HttpContext.Session.SetString("message", $"You slept! Energy: +15 Happiness: -5 Fullness: -5");
+            HttpContext.Session.SetString("image", "slept.jpg");
             
 
             return Json(
@@ -155,7 +166,8 @@ namespace dododachi.Controllers
                     happiness = HttpContext.Session.GetInt32("happiness"),
                     meals = HttpContext.Session.GetInt32("meals"),
                     fullness = HttpContext.Session.GetInt32("fullness"),
-                    message = HttpContext.Session.GetString("message")
+                    message = HttpContext.Session.GetString("message"),
+                    image = HttpContext.Session.GetString("image")
                 }
             );
         }
