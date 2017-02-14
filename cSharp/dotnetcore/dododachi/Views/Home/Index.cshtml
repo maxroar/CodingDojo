@@ -1,5 +1,45 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-<h1>Default Blank Page~</h1>
-<p>Get to adding stuff</p>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h6>
+                        Fullness: <span class="score fullness">@ViewBag.fullness</span>
+                        Happiness: <span class="score happiness">@ViewBag.happiness</span>
+                        Meals: <span class="score meals">@ViewBag.meals</span>
+                        Energy: <span class="score energy">@ViewBag.energy</span>
+                    </h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="row">
+                    <div class="col-xs-6 col-xs-offset-3">
+                        <img src="@ViewBag.displayImg" alt="dojodachi pic">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-10 col-xs-offset-1">
+                        <p><span class="message">@ViewBag.message</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">
+                    <input type="button" class="btn btn-primary btn-lg feed" value="Feed">
+                </div>
+                <div class="col-xs-3">
+                    <input type="button" class="btn btn-primary btn-lg play" value="Play">
+                </div>
+                <div class="col-xs-3">
+                    <input type="button" class="btn btn-primary btn-lg work" value="Work">
+                </div>
+                <div class="col-xs-3">
+                    <input type="button" class="btn btn-primary btn-lg sleep" value="Sleep">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
