@@ -25,13 +25,13 @@ namespace ConsoleApplication
             return card;
         }
 
-        public bool discard(int idx){
-            bool discarded = false;
+        public Card discard(int idx){
             if (idx < hand.Count){
+                Card discarded = hand[idx];
                 hand.Remove(hand[idx]);
-                discarded = true;
+                return discarded;
             }
-            return discarded;
+            return null;
         }
         
     }
