@@ -11,17 +11,21 @@ namespace DojoSurvey.Controllers
   {
    return View("Index");
   }
-  [HttpPost]
+
+    //Probably avoid using the method name "Method"
+    [HttpPost]
     [Route("method")]
-    public IActionResult Method(string nameField, string locationField, string favLang, string comment)
+    // public IActionResult Method(string nameField, string locationField, string favLang, string comment)
+    public IActionResult SurveyResults(string nameField, string locationField, string favLang, string comment)
     {
-        string name = nameField;
-        string loc = locationField;
-        string lang = favLang;
-        string userComment = comment;
+        //No need for variables here, you weren't even using two of them (name & userComment)
+        // string name = nameField;
+        // string loc = locationField;
+        // string lang = favLang;
+        // string userComment = comment;
         ViewBag.name = nameField;
-        ViewBag.location = loc;
-        ViewBag.language = lang;
+        ViewBag.location = locationField;
+        ViewBag.language = favLang;
         ViewBag.comment = comment;
         return View("Method");
     }
