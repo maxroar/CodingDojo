@@ -1,7 +1,9 @@
+using System.Data;
+using MySql.Data.MySqlClient;
 using Microsoft.Extensions.Options;
-// Other usings
+using loginReg.Models;
 
-namespace loginReg
+namespace loginReg.Factory
 {
     public class UserFactory : IFactory<User> {
     private readonly IOptions<MySqlOptions> mysqlConfig;
@@ -15,6 +17,7 @@ namespace loginReg
          return new MySqlConnection(mysqlConfig.Value.ConnectionString);
       }
     }
+    
 }
 }
  
