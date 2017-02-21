@@ -1,6 +1,3 @@
-using System;
-using System.ComponentModel.DataAnnotations;
-
 namespace theWall.Models
 {
     public class User : BaseEntity
@@ -9,5 +6,6 @@ namespace theWall.Models
         public string lname {get; set;}
         public string email {get; set;}
         public string password {get; set;}
+        public string passwordConfirmation {get; set;}
     }
 }

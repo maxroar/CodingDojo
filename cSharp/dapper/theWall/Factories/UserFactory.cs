@@ -24,7 +24,7 @@ namespace theWall.Factory
     public void AddUser(User user)
     {
       using(IDbConnection dbConnection = Connection){
-        string query = "INSERT into Users (fname, lname, email, password, createdAt, updatedAt) VALUES (@fname, @lname, @email, @password, NOW(), NOW())";
+        string query = "INSERT into users (fname, lname, email, password, createdAt, updatedAt) VALUES (@fname, @lname, @email, @password, NOW(), NOW())";
         dbConnection.Open();
         dbConnection.Execute(query, user);
 
@@ -34,7 +34,7 @@ namespace theWall.Factory
     public User GetCurrentUser(string email)
     {
       using(IDbConnection dbConnection = Connection){
-        string query = $"SELECT * FROM Users WHERE email = '{email}' LIMIT 1";
+        string query = $"SELECT * FROM users WHERE email = '{email}' LIMIT 1";
         dbConnection.Open();
         User current = dbConnection.QuerySingleOrDefault<User>(query);
         System.Console.WriteLine(current);
@@ -45,7 +45,7 @@ namespace theWall.Factory
     public User GetUserByID(int id)
     {
       using(IDbConnection dbConnection = Connection){
-        string query = $"SELECT * FROM Users WHERE id = {id} LIMIT 1";
+        string query = $"SELECT * FROM users WHERE id = {id} LIMIT 1";
         dbConnection.Open();
         User current = dbConnection.QuerySingleOrDefault<User>(query);
         System.Console.WriteLine(current);

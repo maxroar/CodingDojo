@@ -3822,10 +3822,6 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
-      },
-      "humans/1.0.0": {
-        "type": "project",
-        "framework": "Unsupported,Version=v0.0"
       }
     }
   },
@@ -10018,10 +10014,6 @@
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._"
       ]
-    },
-    "humans/1.0.0": {
-      "type": "project",
-      "path": "../humans/project.json"
     }
   },
   "projectFileDependencyGroups": {
@@ -10036,8 +10028,7 @@
       "Microsoft.Extensions.Logging.Console >= 1.0.0",
       "Microsoft.Extensions.Options.ConfigurationExtensions >= 1.0.0",
       "Microsoft.NETCore.App >= 1.1.0",
-      "MySql.Data.Core >= 7.0.4-IR-191",
-      "humans >= 1.0.0"
+      "MySql.Data.Core >= 7.0.4-IR-191"
     ],
     ".NETCoreApp,Version=v1.0": []
   },
