@@ -1,10 +1,7 @@
-using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace loginReg.Models
-{
-    public class User : BaseEntity
-    {
+namespace loginReg.ViewModels{
+    public class RegisterViewModel{
         [Required(ErrorMessage = "You must include a first name.")]
         [MinLength(2, ErrorMessage = "First name must be filled in and at least 2 characters.")]
         public string fname {get; set;}

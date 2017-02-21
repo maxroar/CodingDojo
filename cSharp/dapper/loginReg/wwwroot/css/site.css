@@ -1,1 +1,4 @@
 /*Write all of your CSS here*/
+span.error{
+    color: tomato;
+}
