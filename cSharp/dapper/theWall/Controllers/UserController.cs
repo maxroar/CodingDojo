@@ -47,8 +47,8 @@ namespace theWall.Controllers
                 };
                 bool exists = userFactory.CheckUserInDB(user.email);
                 if(exists){
-                    ViewBag.error = "This email is already registered. PLease log in.";
-                    return View("Register");
+                    ViewBag.error = "This email is already registered. Please log in.";
+                    return View("Login");
                 }
                 else{
                     userFactory.AddUser(user);
@@ -71,7 +71,7 @@ namespace theWall.Controllers
                 bool exists = userFactory.CheckUserInDB(loginModel.email);
                 if(!exists){
                     ViewBag.error = "This email isn't registered. Please register.";
-                    return View("Login");
+                    return View("Register");
                 }
                 User user = userFactory.GetCurrentUser(loginModel.email);
                 HttpContext.Session.SetInt32("user", user.id);
