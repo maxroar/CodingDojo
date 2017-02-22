@@ -83,10 +83,10 @@ namespace theWall.Controllers
         [HttpGetAttribute]
         [RouteAttribute("success")]
         public IActionResult Success(){
-            User user = userFactory.GetUserByID((int)HttpContext.Session.GetInt32("user"));
+            
             // ViewBag.user = userFactory.GetCurrentUser(HttpContext.Session.GetString("user"));
 
-            return View("Success", user);
+            return RedirectToAction("DisplayWall", "Wall");
         }
 
         [HttpGetAttribute]
