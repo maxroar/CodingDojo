@@ -26,8 +26,8 @@
             <div class="col-xs-12">
                 @{
                     foreach(Post post in @ViewBag.posts){
-                        
-                        <p>@post.content</p>
+                        <p class="userStamp">posted by: @post.user.fname @post.createdAt</p>
+                        <p class="postText">@post.content</p>
                        
 
                         if(post.user_id == @ViewBag.user.id){
@@ -46,17 +46,16 @@
                         <div class="col-xs-9 col-xs-offset-3">
                                 @Html.Partial("_CommentForm", new Comment{post_id = post.id})
                         </div>
-                        
 
-
+                        <div class="col-xs-9 col-xs-offset-3">
+                            @{
+                                foreach(Comment comment in @post.comments){
+                                    <p class="userStamp">posted by: @comment.user.fname @comment.createdAt</p>
+                                    <p>@comment.content</p>
+                                }}
+                        </div>
+            
                         
-                        foreach(Comment comment in @ViewBag.comments){
-                            if(comment.post_id == post.id){
-                                <div class="col-xs-9 col-xs-offset-3">
-                                <p class="comment">@comment.content</p>
-                                </div>
-                            }
-                        }
                         
 
                     }

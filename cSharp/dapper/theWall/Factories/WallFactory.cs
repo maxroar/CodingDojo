@@ -6,6 +6,7 @@ using Dapper;
 using System.Linq;
 using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
+using static Dapper.SqlMapper;
 
 namespace theWall.Factory
 {
@@ -35,9 +36,24 @@ namespace theWall.Factory
     public List<Post> GetAllPosts()
     {
       using(IDbConnection dbConnection = Connection){
-        string query = "SELECT * FROM posts INNER JOIN users on posts.user_id = users.id";
+        string query = @"SELECT * FROM posts JOIN users on posts.user_id = users.id ORDER BY posts.createdAt DESC; SELECT * FROM comments JOIN users on comments.user_id = users.id";
         dbConnection.Open();
-        return dbConnection.Query<Post>(query).ToList();
+        using (GridReader multi = dbConnection.QueryMultiple(query, null))
+        {
+          List<Post> Posts = multi.Read<Post, User, Post>((post, user) => {post.user = user; return post;}, splitOn: "user_id").ToList();
+          List<Comment> Comments = multi.Read<Comment, User, Comment>((comment, user) => {comment.user = user; return comment;}, splitOn: "user_id").ToList();
+          List<Post> combo = Posts.GroupJoin(
+            Comments,
+            post => post.id,
+            comment => comment.post_id,
+            (post, comments) =>
+            {
+              post.comments = comments.ToList();
+              return post;
+            }
+          ).ToList();
+          return combo;
+        }
       }
     }
 
@@ -60,12 +76,12 @@ namespace theWall.Factory
         dbConnection.Execute(query);
       }
     }
-    public List<Comment> GetAllComments()
+    public void DeleteComment(int cid)
     {
       using(IDbConnection dbConnection = Connection){
-        string query = "SELECT * FROM comments";
+        string query = $"DELETE FROM comments WHERE id = {cid}";
         dbConnection.Open();
-        return dbConnection.Query<Comment>(query).ToList();
+        dbConnection.Execute(query);
       }
     }
 

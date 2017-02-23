@@ -9,5 +9,7 @@ namespace theWall.Models
         public string content {get; set;}
         public int post_id {get; set;}
         public int user_id {get; set;}
+        public User user {get; set;}
+        public Post post {get; set;}
     }
 }

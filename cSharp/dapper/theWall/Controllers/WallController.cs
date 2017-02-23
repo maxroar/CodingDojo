@@ -31,7 +31,6 @@ namespace theWall.Controllers
             ViewBag.user = user;
 
             ViewBag.posts = wallFactory.GetAllPosts();
-            ViewBag.comments = wallFactory.GetAllComments();
             return View("Wall");
         }
 
@@ -60,6 +59,15 @@ namespace theWall.Controllers
         public IActionResult DeletePost(Post post)
         {
             wallFactory.DeletePost(post.id);
+
+            return RedirectToAction("DisplayWall");
+        }
+
+        [HttpPostAttribute]
+        [Route("DeleteComment")]
+        public IActionResult DeleteComment(Comment comment)
+        {
+            wallFactory.DeleteComment(comment.id);
 
             return RedirectToAction("DisplayWall");
         }

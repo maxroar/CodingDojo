@@ -2,3 +2,13 @@
 .error{
     color: tomato;
 }
+
+.userStamp{
+    font-size: 1.2rem;
+    color: lighter;
+    font-style: italic;
+}
+
+.postText{
+    font-size: 2.3rem;
+}
