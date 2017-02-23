@@ -31,6 +31,7 @@ namespace theWall.Controllers
             ViewBag.user = user;
 
             ViewBag.posts = wallFactory.GetAllPosts();
+            ViewBag.comments = wallFactory.GetAllComments();
             return View("Wall");
         }
 
@@ -40,7 +41,25 @@ namespace theWall.Controllers
         {
             
 
-            wallFactory.AddPost(post.content, (int)HttpContext.Session.GetInt32("user"));
+            wallFactory.AddPost(post, (int)HttpContext.Session.GetInt32("user"));
+
+            return RedirectToAction("DisplayWall");
+        }
+
+        [HttpPostAttribute]
+        [Route("AddComment")]
+        public IActionResult AddComment(Comment comment)
+        {
+            wallFactory.AddComment(comment, (int)HttpContext.Session.GetInt32("user"));
+
+            return RedirectToAction("DisplayWall");
+        }
+        
+        [HttpPostAttribute]
+        [Route("DeletePost")]
+        public IActionResult DeletePost(Post post)
+        {
+            wallFactory.DeletePost(post.id);
 
             return RedirectToAction("DisplayWall");
         }

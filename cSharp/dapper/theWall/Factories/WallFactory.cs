@@ -22,12 +22,12 @@ namespace theWall.Factory
       }
     }
 
-    public void AddPost(string content, int uid)
+    public void AddPost(Post post, int uid)
     {
       using(IDbConnection dbConnection = Connection){
-        string query = $"INSERT into posts (content, user_id, createdAt, updatedAt) VALUES ('" + content + $"', {uid}, NOW(), NOW())";
+        string query = $"INSERT into posts (content, user_id, createdAt, updatedAt) VALUES (@content, {uid}, NOW(), NOW())";
         dbConnection.Open();
-        dbConnection.Execute(query);
+        dbConnection.Execute(query, post);
 
       }
       
@@ -35,35 +35,39 @@ namespace theWall.Factory
     public List<Post> GetAllPosts()
     {
       using(IDbConnection dbConnection = Connection){
-        string query = "SELECT * FROM posts";
+        string query = "SELECT * FROM posts INNER JOIN users on posts.user_id = users.id";
         dbConnection.Open();
         return dbConnection.Query<Post>(query).ToList();
       }
     }
 
-    // public User GetUserByID(int id)
-    // {
-    //   using(IDbConnection dbConnection = Connection){
-    //     string query = $"SELECT * FROM users WHERE id = {id} LIMIT 1";
-    //     dbConnection.Open();
-    //     User current = dbConnection.QuerySingleOrDefault<User>(query);
-    //     System.Console.WriteLine(current);
-    //     return current;
-    //   }
-    // }
+    public void AddComment(Comment comment, int uid)
+    {
+      using(IDbConnection dbConnection = Connection){
+        string query = $"INSERT into comments (content, user_id, post_id, createdAt, updatedAt) VALUES (@content, {uid}, @post_id, NOW(), NOW())";
+        dbConnection.Open();
+        dbConnection.Execute(query, comment);
 
-    // public bool CheckUserInDB(string email){
-    //   User newUser = GetCurrentUser(email);
-    //   return newUser != null;
-    // }
+      }
+      
+    }
 
-    // public bool CheckLogin(User user){
-    //   User newUser = GetCurrentUser(user.email);
-    //   var hasher = new PasswordHasher<User>();
-    //   if(0 != hasher.VerifyHashedPassword(user, user.password, newUser.password)){
-    //     return true;
-    //   }
-    //   return false;
-    // }
+    public void DeletePost(int pid)
+    {
+      using(IDbConnection dbConnection = Connection){
+        string query = $"DELETE FROM comments WHERE post_id = {pid}; DELETE FROM posts WHERE id = {pid}";
+        dbConnection.Open();
+        dbConnection.Execute(query);
+      }
+    }
+    public List<Comment> GetAllComments()
+    {
+      using(IDbConnection dbConnection = Connection){
+        string query = "SELECT * FROM comments";
+        dbConnection.Open();
+        return dbConnection.Query<Comment>(query).ToList();
+      }
+    }
+
 }
 }

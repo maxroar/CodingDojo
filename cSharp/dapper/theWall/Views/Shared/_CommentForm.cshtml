@@ -1,0 +1,13 @@
+@model theWall.Models.Comment
+
+<form asp-controller="Wall" asp-action="AddComment" method="post">
+    <div class="form-group">
+        <input type="hidden" asp-for="post_id" value="@Model.post_id">
+        <span asp-validation-for="content" class="error"></span><br/>
+        <label for="content" >New Comment: </label>
+        <input type="text" class="form-control" asp-for="content">
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Add Comment" class="btn btn-primary">
+    </div>
+</form>
