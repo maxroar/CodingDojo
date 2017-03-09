@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model wishlist.ViewModels.RegisterViewModel
+
+<div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <h1>Welcome!</h1>
+        <span class="error">@ViewBag.error</span>
+        <form asp-controller="User" asp-action="Register" method="post" class="well">
+            <div class="form-group">
+                <span class="error" asp-validation-for="fname"></span><br/>
+                <label for="fname" >First Name: </label>
+                <input class="form-control" asp-for="fname">
+            </div>
+            <div class="form-group">
+                <span class="error" asp-validation-for="lname"></span><br/>
+                <label for="lname" >First Name: </label>
+                <input class="form-control" asp-for="lname">
+            </div>
+            <div class="form-group">
+                <span asp-validation-for="email" class="error"></span><br/>
+                <label for="email" >Email: </label>
+                <input class="form-control" asp-for="email">
+            </div>
+            <div class="form-group">
+                <span asp-validation-for="password" class="error"></span><br/>
+                <label for="password" >Password: </label>
+                <input class="form-control" asp-for="password">
+            </div>
+            <div class="form-group">
+                <span asp-validation-for="passwordConfirmation" class="error"></span><br/>
+                <label for="pass2">Confirm Password: </label>
+                <input asp-for="passwordConfirmation" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-primary btn-block">
+            </div>
+        </form>
+    </div>
+    <div class="col-xs-6 col-md-3">
+        <h3>Already a user?</h3>
+        <a href="/LoginIndex" class="btn btn-primary btn-block">Log In</a>
+    </div>
+</div>

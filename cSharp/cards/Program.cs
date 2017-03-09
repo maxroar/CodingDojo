@@ -33,7 +33,6 @@ namespace ConsoleApplication
             System.Console.WriteLine(newCard.stringVal);
             System.Console.WriteLine(newCard.suit);
             System.Console.WriteLine(max.hand);
-        }
-        
+        }   
     }
 }

@@ -1,0 +1,57 @@
+@model IEnumerable<wishlist.Models.Item>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="row">
+    <div class="col-xs-offset-9 col-xs-3">
+        <a href="/logout" class="btn btn-primary btn-block">Log Out</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model){
+                    foreach(var wish in item.Wishes){
+                        if(wish.userId == ViewBag.current.id){
+                            <p>@wish.user.fname</p>
+                        }
+                    }
+                    }
+                    
+                    
+                }
+            </tbody>
+        </table>
+    </div>
+    
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Added By</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            
+        </table>
+    </div>
+    
+</div>

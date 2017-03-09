@@ -1,0 +1,17 @@
+@model IEnumerable<loginReg.Models.User>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+<div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+        @foreach(var user in Model){
+            <p>@user.fname</p>
+            <p>@user.createdAt</p>
+        }
+        <a href="/logout" class="btn btn-primary btn-block">Log Out</a>
+    </div>
+</div>
