@@ -1,0 +1,17 @@
+{
+  "name": "testapp",
+  "version": "1.0.0",
+  "description": "test application setting up express",
+  "main": "main.js",
+  "dependencies": {
+    "express": "^4.15.2",
+    "handlebars": "^4.0.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "max rohrer",
+  "license": "ISC"
+}
