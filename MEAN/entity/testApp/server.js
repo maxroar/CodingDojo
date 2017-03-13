@@ -12,3 +12,16 @@ app.listen(8000, function() {
 
 // look for all static files in static folder
 app.use(express.static(__dirname + '/static'));
+
+// This sets the location where express will look for the ejs views
+app.set('views', __dirname + '/views'); 
+// Now lets set the view engine itself so that express knows that we are using jade as opposed to another templating engine like jade
+app.set('view engine', 'pug');
+
+app.get('/users', function(request, response){
+	var user_arr = [
+		{name: 'max', email: 'mxrohrer@gmail.com'},
+		{name: 'max2', email: 'mxrohrer@gmail.com2'}
+	];
+	response.render('users', {users: user_arr});
+})
