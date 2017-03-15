@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+    <head>
+        <meta charset="utf-8">
+        <title>Angular</title>
+        <script src="node_modules/angular/angular.js" charset="utf-8"></script>
+    <script type='text/javascript'>
+        var myAppModule = angular.module('app', []);
+        myAppModule.controller('divController', ['$scope' ,function ($scope){
+            $scope.name = 'Max';
+            $scope.favoriteLanguage = 'python';
+            $scope.favoriteLibrary = 'entity';
+        }])
+    </script>
+    </head>
+    <body>
+        <div ng-controller="divController">
+            <p>Hello, my name is {{name}}. My favorite language is {{favoriteLanguage}}. My favorite framework is {{favoriteLibrary}}</p>
+            <p><span ng-bind='name'></span></p>
+        </div>
+    </body>
+</html>
+
