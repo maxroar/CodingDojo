@@ -15,7 +15,11 @@ namespace ConsoleApplication
             hand = new List<Card>();
         }
 
-        public Card draw(ref Deck deck){
+        //Pass by reference is not needed in this case because we are changing
+        //the data withing the object reference by calling its .deal() method
+        //http://stackoverflow.com/questions/8708632/passing-objects-by-reference-or-value-in-c-sharp
+        //public Card draw(ref Deck deck){
+        public Card draw(Deck deck) {
             Card card = deck.deal();
             hand.Add(card);
             return card;

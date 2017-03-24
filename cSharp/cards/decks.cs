@@ -7,8 +7,13 @@ namespace ConsoleApplication
 {
     public class Deck
     {
-            public List<Card> cards;
+        public List<Card> cards;
         
+        //usually best practice to always place constructor function at the top of the class
+        public Deck()
+        {
+            buildDeck();
+        }
         public void buildDeck()
         {
             cards = new List<Card>();
@@ -51,10 +56,6 @@ namespace ConsoleApplication
                 }
             }
         }
-        public Deck()
-        {
-            buildDeck();
-        }
         public Card deal(){
             Card lastCard = cards[cards.Count-1];
             cards.RemoveAt(cards.Count-1);
@@ -62,7 +63,8 @@ namespace ConsoleApplication
         }
 
         public void reset(){
-            cards.Clear();
+            // Setting the cards List to a new List in buildDeck will do the same as cards.Clear() in this case
+            //cards.Clear();
             buildDeck();
         }
 
