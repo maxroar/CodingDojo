@@ -3,8 +3,11 @@ using System.Collections.Generic;
 
 namespace ConsoleApplication
 {
+    //The code quality here looks great
     class Algos
     {
+        //When importing the namespace System, there is no need to write out the full
+        //System.Console.WriteLine you can just have Console.WriteLine
         public void oneTo255(){
             for (int i = 0; i < 256; i ++){
                 System.Console.WriteLine(i);
@@ -40,7 +43,9 @@ namespace ConsoleApplication
             }
             return max;
         }
-
+        
+        //With this method as well as minMaxAvg you can make use of an array's built in .Length value
+        //Rather than keeping a count variable
         public double avgArr(int[] arr){
             int total = 0;
             int count = 0;
@@ -85,7 +90,8 @@ namespace ConsoleApplication
             }
             return arr;
         }
-
+        
+        //You only needed to print out the min, max, and average, but the tuple usage is awesome!
         public Tuple<int, int, double> minMaxAvg(int[] arr){
             int max = arr[0];
             int min = arr[0];
